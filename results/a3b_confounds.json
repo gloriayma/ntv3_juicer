@@ -1,0 +1,10 @@
+{
+  "pct_same_tissue_pairs_same_lab": 0.28738460287120254,
+  "pct_diff_tissue_pairs_same_lab": 0.1396692351232629,
+  "auroc_tissue_all_pairs": 0.5655931112566464,
+  "auroc_lab_all_pairs": 0.6178370419357617,
+  "n_cross_lab_pairs": 6093582,
+  "n_cross_lab_same_tissue": 35045,
+  "auroc_tissue_cross_lab_only": 0.5442003818475003,
+  "auroc_tissue_same_lab_only": 0.5881204370162688
+}

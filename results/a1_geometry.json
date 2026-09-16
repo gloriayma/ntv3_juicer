@@ -1,0 +1,70 @@
+{
+  "pca": {
+    "evr_top10": [
+      0.0989748814825075,
+      0.07329814056354042,
+      0.040328396583533634,
+      0.03536110312010818,
+      0.02872943243737014,
+      0.017394718068269595,
+      0.014637872444181408,
+      0.012663350450545013,
+      0.010956330917708906,
+      0.008939219872311749
+    ],
+    "cumulative_10": 0.34128344594007654,
+    "cumulative_50": 0.5158852471454424
+  },
+  "probe_modality": {
+    "n": 5503,
+    "n_classes": 20,
+    "balanced_acc": 0.9390985556908642,
+    "balanced_acc_sd": 0.029846139816144805,
+    "permuted_baseline": 0.04781101514459572,
+    "chance": 0.05
+  },
+  "probe_assay_family": {
+    "n": 6895,
+    "n_classes": 5,
+    "balanced_acc": 0.9515281009328026,
+    "balanced_acc_sd": 0.034779480277543115,
+    "permuted_baseline": 0.20137587685701783,
+    "chance": 0.2
+  },
+  "probe_tissue": {
+    "n": 4894,
+    "n_classes": 71,
+    "balanced_acc": 0.3106689234135341,
+    "balanced_acc_sd": 0.04521225433308906,
+    "permuted_baseline": 0.01225579562904311,
+    "chance": 0.014084507042253521
+  },
+  "probe_modality_amplitude": {
+    "n": 5503,
+    "n_classes": 20,
+    "balanced_acc": 0.213218058158075,
+    "balanced_acc_sd": 0.011595179081210922,
+    "permuted_baseline": 0.05003858317520556,
+    "chance": 0.05
+  },
+  "knn": {
+    "k": 10,
+    "modality_purity": 0.7679332849891225,
+    "tissue_purity_all": 0.3350858175248419,
+    "tissue_purity_cross_modality": 0.7380503144654088,
+    "chance_same_tissue": 0.017386900638051855,
+    "enrichment": 42.44864164290209
+  },
+  "top_tissue_names": {
+    "EFO:0002067": "K562",
+    "EFO:0001187": "HepG2",
+    "EFO:0002784": "GM12878",
+    "EFO:0001182": "HEK293",
+    "EFO:0001203": "MCF-7",
+    "EFO:0003042": "H1",
+    "EFO:0001086": "A549",
+    "UBERON:0000945": "stomach",
+    "UBERON:0002107": "liver",
+    "UBERON:0002369": "adrenal gland"
+  }
+}

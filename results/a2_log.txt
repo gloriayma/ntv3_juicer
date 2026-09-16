@@ -1,0 +1,7 @@
+3941 tracks, 255 tissues, 32 modalities
+
+modality-removal control: subtract each modality centroid, then re-test tissue
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200  raw                delta=+0.06600 z=+199.3 AUROC=0.6134 pos=72.1%
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200  modality_removed   delta=+0.08278 z=+207.9 AUROC=0.6346 pos=73.7%
+
+saved results/a2_*.json and figures/a2_*.png

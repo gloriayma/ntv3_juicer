@@ -1,0 +1,36 @@
+
+========================================================================
+NTv3_100M_post
+========================================================================
+tracks=3949 tissues=255 modalities=32 modality-x-lab strata=106
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+  permute within modality
+    observed delta : +0.06604
+    null mean/sd   : -0.000023 / 0.000417
+    z              : +158.4
+    p (permutation): 0.00498
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+  permute within modality x lab
+    observed delta : +0.06604
+    null mean/sd   : +0.005575 / 0.000493
+    z              : +122.8
+    p (permutation): 0.00498
+
+========================================================================
+NTv3_650M_post
+========================================================================
+tracks=3941 tissues=255 modalities=32 modality-x-lab strata=106
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+  permute within modality
+    observed delta : +0.06600
+    null mean/sd   : +0.000028 / 0.000331
+    z              : +199.3
+    p (permutation): 0.00498
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+  permute within modality x lab
+    observed delta : +0.06600
+    null mean/sd   : +0.004660 / 0.000416
+    z              : +147.6
+    p (permutation): 0.00498
+
+saved results/a3c_decisive.json

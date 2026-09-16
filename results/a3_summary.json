@@ -1,0 +1,58 @@
+{
+  "NTv3_100M_post::all_biosamples": {
+    "n_tracks": 3949,
+    "n_tissues": 255,
+    "n_modalities": 32,
+    "observed_delta": 0.06603762399817596,
+    "null_mean": -2.2759831490196307e-05,
+    "null_sd": 0.00041706882904216964,
+    "z": 158.39204282271314,
+    "p_perm": 0.004975124378109453,
+    "n_strata": 17834,
+    "frac_positive_strata": 0.7240103173713133,
+    "stratified_auroc": 0.6071735841710889,
+    "pooled_auroc": 0.5651611707790221
+  },
+  "NTv3_100M_post::tissues_only": {
+    "n_tracks": 2556,
+    "n_tissues": 144,
+    "n_modalities": 15,
+    "observed_delta": 0.04569537617922933,
+    "null_mean": 4.125782725741991e-06,
+    "null_sd": 0.0005226918546855404,
+    "z": 87.41527151593392,
+    "p_perm": 0.004975124378109453,
+    "n_strata": 6372,
+    "frac_positive_strata": 0.67984934086629,
+    "stratified_auroc": 0.5687501867520149,
+    "pooled_auroc": 0.5345121941832525
+  },
+  "NTv3_650M_post::all_biosamples": {
+    "n_tracks": 3941,
+    "n_tissues": 255,
+    "n_modalities": 32,
+    "observed_delta": 0.06599953318086978,
+    "null_mean": 2.8378895570546936e-05,
+    "null_sd": 0.0003310119573015588,
+    "z": 199.30142349872315,
+    "p_perm": 0.004975124378109453,
+    "n_strata": 17777,
+    "frac_positive_strata": 0.7213815604432694,
+    "stratified_auroc": 0.6134219397697867,
+    "pooled_auroc": 0.5655931112566464
+  },
+  "NTv3_650M_post::tissues_only": {
+    "n_tracks": 2549,
+    "n_tissues": 144,
+    "n_modalities": 15,
+    "observed_delta": 0.04357773784765126,
+    "null_mean": 1.6556530719410945e-07,
+    "null_sd": 0.0004052272029968649,
+    "z": 107.53861527574004,
+    "p_perm": 0.004975124378109453,
+    "n_strata": 6358,
+    "frac_positive_strata": 0.6816608996539792,
+    "stratified_auroc": 0.5754996269892431,
+    "pooled_auroc": 0.5356410455292968
+  }
+}

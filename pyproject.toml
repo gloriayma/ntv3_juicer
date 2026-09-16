@@ -1,0 +1,29 @@
+[project]
+name = "ntv3-interp"
+version = "0.1.0"
+description = "Does the NTv3 functional-track head factorize tissue from assay modality?"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "scikit-learn>=1.4",
+    "umap-learn>=0.5.6",
+    "pandas>=2.2",
+    "pyarrow>=15.0",
+    "matplotlib>=3.8",
+    "seaborn>=0.13",
+    "requests>=2.31",
+    "safetensors>=0.4.2",
+    "huggingface-hub>=0.23",
+    "tqdm>=4.66",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ntv3_interp"]
+
+[tool.ruff]
+line-length = 100

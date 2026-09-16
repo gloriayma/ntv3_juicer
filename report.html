@@ -1,0 +1,731 @@
+<title>NTv3 Head Geometry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  :root {
+    color-scheme: light;
+    --ground:      #f6f8fa;
+    --surface:     #ffffff;
+    --surface-2:   #edf1f5;
+    --ink:         #0f1419;
+    --ink-2:       #475462;
+    --ink-3:       #77848f;
+    --rule:        #dce3ea;
+    --rule-strong: #c3ced9;
+    --accent:      #1f6fd0;
+    --accent-soft: #e9f0fb;
+    --warn:        #b0531e;
+    --warn-soft:   #f9efe7;
+    --good:        #1a7f57;
+
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+    --sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    --col: 68ch;
+    --wide: 1080px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground:      #0d1117;
+      --surface:     #141b23;
+      --surface-2:   #1b232e;
+      --ink:         #e9eef4;
+      --ink-2:       #a6b3c1;
+      --ink-3:       #7d8a97;
+      --rule:        #232d39;
+      --rule-strong: #35424f;
+      --accent:      #62a3f5;
+      --accent-soft: #132740;
+      --warn:        #e08a52;
+      --warn-soft:   #2a1d13;
+      --good:        #4cb98b;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground:      #0d1117;
+    --surface:     #141b23;
+    --surface-2:   #1b232e;
+    --ink:         #e9eef4;
+    --ink-2:       #a6b3c1;
+    --ink-3:       #7d8a97;
+    --rule:        #232d39;
+    --rule-strong: #35424f;
+    --accent:      #62a3f5;
+    --accent-soft: #132740;
+    --warn:        #e08a52;
+    --warn-soft:   #2a1d13;
+    --good:        #4cb98b;
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    margin: 0;
+    padding: 0 24px 120px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: var(--wide); margin: 0 auto; }
+  .col { max-width: var(--col); }
+
+  /* ---------- masthead ---------- */
+  header.mast {
+    padding: 72px 0 40px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 44px;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 20px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(2.2rem, 5.2vw, 3.4rem);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    margin: 0 0 22px;
+    max-width: 20ch;
+  }
+  .standfirst {
+    font-family: var(--serif);
+    font-size: 1.24rem;
+    line-height: 1.5;
+    color: var(--ink-2);
+    max-width: 58ch;
+    margin: 0;
+  }
+  .standfirst strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- stat strip ---------- */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(178px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 40px 0 8px;
+  }
+  .stat { background: var(--surface); padding: 20px 22px 18px; }
+  .stat .k {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 10px;
+  }
+  .stat .v {
+    font-family: var(--mono);
+    font-size: 1.85rem;
+    font-weight: 500;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+    margin: 0 0 8px;
+  }
+  .stat .d { font-size: 12.5px; line-height: 1.45; color: var(--ink-2); margin: 0; }
+
+  /* ---------- sections ---------- */
+  section { margin: 64px 0 0; }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+    margin-bottom: 26px;
+  }
+  .sec-id {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 3px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.72rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0;
+  }
+  h3 {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.005em;
+    margin: 36px 0 12px;
+  }
+  p { margin: 0 0 18px; max-width: var(--col); }
+  ul, ol { max-width: var(--col); padding-left: 1.15em; margin: 0 0 18px; }
+  li { margin-bottom: 9px; }
+  strong { font-weight: 600; }
+  a { color: var(--accent); text-underline-offset: 2px; }
+
+  code {
+    font-family: var(--mono);
+    font-size: 0.875em;
+    background: var(--surface-2);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+  pre {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.6;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 2px solid var(--rule-strong);
+    border-radius: 3px;
+    padding: 18px 20px;
+    overflow-x: auto;
+    margin: 0 0 20px;
+  }
+  pre code { background: none; padding: 0; font-size: inherit; }
+
+  /* ---------- math ---------- */
+  .math {
+    font-family: var(--serif);
+    font-size: 1.06rem;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 2px solid var(--accent);
+    border-radius: 3px;
+    padding: 18px 22px;
+    margin: 0 0 20px;
+    overflow-x: auto;
+    line-height: 1.9;
+  }
+  .math .note {
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: var(--ink-3);
+    display: block;
+    margin-top: 6px;
+  }
+
+  /* ---------- callouts ---------- */
+  .callout {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 3px;
+    padding: 20px 24px;
+    margin: 0 0 22px;
+    max-width: var(--col);
+  }
+  .callout.caution { border-left-color: var(--warn); }
+  .callout .lbl {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    display: block;
+    margin-bottom: 9px;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* ---------- figures ---------- */
+  figure { margin: 30px 0 34px; max-width: var(--wide); }
+  figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    background: #fcfcfb;
+  }
+  figcaption {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin-top: 11px;
+    max-width: 72ch;
+  }
+  figcaption b { color: var(--ink); font-weight: 600; }
+  .fig-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 22px; }
+  .fig-pair figure { margin: 0; }
+
+  /* ---------- tables ---------- */
+  .tw { overflow-x: auto; margin: 0 0 22px; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 13.5px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+  }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--rule); }
+  thead th {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+    background: var(--surface-2);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; }
+  td.hi { color: var(--accent); font-weight: 500; }
+
+  /* ---------- verdict ---------- */
+  .verdict {
+    background: var(--surface);
+    border: 1px solid var(--rule-strong);
+    border-radius: 3px;
+    padding: 28px 30px;
+    margin: 36px 0 0;
+  }
+  .verdict h3 { margin-top: 0; font-family: var(--serif); font-size: 1.3rem; font-weight: 500; }
+  .verdict p:last-child { margin-bottom: 0; }
+
+  footer {
+    margin-top: 72px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--ink-3);
+    max-width: var(--col);
+  }
+
+  @media (max-width: 640px) {
+    header.mast { padding-top: 48px; }
+    .sec-head { flex-direction: column; gap: 10px; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <p class="eyebrow">NTv3 interpretability · functional-track head</p>
+    <h1>Does the track head learn biology, or just modality?</h1>
+    <p class="standfirst">
+      NTv3 learns one linear projection per functional track, with nothing in the
+      parameterization tying RNA-seq tracks to each other or telling the model that a liver
+      ATAC track and a liver RNA track share a tissue. <strong>It learns tissue structure
+      anyway — but modality dominates, and tissue is a second-order effect that survives
+      batch controls.</strong>
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <p class="k">Modality probe</p>
+        <p class="v">0.939</p>
+        <p class="d">Balanced accuracy over 20 assay types (chance 0.05)</p>
+      </div>
+      <div class="stat">
+        <p class="k">Tissue probe</p>
+        <p class="v">0.311</p>
+        <p class="d">Over 71 biosamples (chance 0.014) — 22× chance</p>
+      </div>
+      <div class="stat">
+        <p class="k">Tissue effect</p>
+        <p class="v">z = 199</p>
+        <p class="d">Δ = +0.066 vs permutation null, modality held fixed</p>
+      </div>
+      <div class="stat">
+        <p class="k">Explained by lab</p>
+        <p class="v">7%</p>
+        <p class="d">Batch accounts for a small fraction; z = 148 remains</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= PREMISE ================= -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-id">Premise</span>
+      <h2>The head really is that thin</h2>
+    </div>
+
+    <p>
+      Confirmed from the published source,
+      <code>nucleotide_transformer_v3/heads.py</code>:
+    </p>
+
+<pre><code>class LinearHead(nnx.Module):
+    def __init__(self, embed_dim, num_labels, *, rngs):
+        self.layer_norm = nnx.LayerNorm(embed_dim, rngs=rngs)
+        self.head = nnx.Linear(in_features=embed_dim, out_features=num_labels, rngs=rngs)
+
+    def __call__(self, x):
+        return jax.nn.softplus(self.head(self.layer_norm(x)))</code></pre>
+
+    <p>
+      Track <em>t</em>'s prediction is <code>softplus(w_t · LN(x) + b_t)</code>, where
+      <code>w_t</code> is literally one column of a single weight matrix. There is no
+      cross-track structure of any kind — no assay embedding, no tissue factor, no shared
+      low-rank basis. Whatever organization exists had to be learned from the prediction
+      objective alone.
+    </p>
+
+    <p>
+      Two structural details that shaped the analysis. First, the head is
+      <strong>per-species</strong> (<code>bigwig_head.species_heads.{i}</code>), so human is a
+      standalone module — index 21, <strong>7,362 tracks</strong>, 1,536-d in the 650M
+      checkpoint. That is cleaner than slicing rows out of a shared matrix, and it means
+      cross-species comparison would be meaningless anyway, since each species has its own
+      LayerNorm. Second, the head consumes the trunk embedding directly, with nothing in
+      between.
+    </p>
+
+    <div class="callout">
+      <span class="lbl">Method note</span>
+      <p>
+        No model inference was needed. The analysis requires exactly four tensors, so they were
+        pulled out of <code>model.safetensors</code> by HTTP range request using the format's
+        header offsets — tens of MB instead of 2.6 GB, and no torch or JAX in the dependency
+        tree. Track identities come from <code>config.json</code>; modality and biosample
+        labels from the public ENCODE API.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= A0 ================= -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-id">A0</span>
+      <h2>A gauge freedom decides the preprocessing</h2>
+    </div>
+
+    <p>
+      Whether to mean-center the head vectors was an open question going in. The architecture
+      settles it. The linear sits directly on a LayerNorm, whose output
+      <code>n(x)</code> is <strong>exactly zero-mean across <code>embed_dim</code></strong> by
+      construction. Expanding, and writing <code>v_t := γ ⊙ w_t</code>:
+    </p>
+
+    <div class="math">
+      w<sub>t</sub> · LN(x) + b<sub>t</sub> &nbsp;=&nbsp; (γ ⊙ w<sub>t</sub>) · n(x) &nbsp;+&nbsp; (w<sub>t</sub> · β + b<sub>t</sub>)
+      <span class="note">where ⟨1, n(x)⟩ = 0 for every input x</span>
+    </div>
+
+    <p>Therefore, for any constant <em>c</em>:</p>
+
+    <div class="math">
+      (v<sub>t</sub> + c·1) · n(x) &nbsp;≡&nbsp; v<sub>t</sub> · n(x)
+      <span class="note">for all inputs, with the induced shift absorbed by the free bias</span>
+    </div>
+
+    <p>
+      The all-ones component of <code>v_t</code> is a <strong>gauge freedom</strong> — it
+      provably cannot change any prediction. Two tracks can differ in raw cosine purely because
+      of a coordinate the model is indifferent to. The identifiable object is therefore
+      <code>ṽ_t = center(γ ⊙ w_t)</code>, and <code>cos(ṽ_i, ṽ_j)</code> is the Pearson
+      correlation of the γ-scaled weights.
+    </p>
+
+    <p>Three consequences:</p>
+    <ul>
+      <li><strong>Mean-centering is mandatory</strong>, not stylistic — it removes a coordinate that cannot affect the model.</li>
+      <li><strong>The γ rescaling matters</strong> and is easy to miss: LayerNorm reweights every input coordinate before the dot product, so comparing raw <code>w_t</code> measures similarity in the wrong metric.</li>
+      <li><strong>Norms stay separate.</strong> <code>‖ṽ_t‖</code> is the track's effective gain and is real information, but it is reported on its own rather than allowed to contaminate a cosine.</li>
+    </ul>
+
+    <div class="callout caution">
+      <span class="lbl">Verified, and honestly caveated</span>
+      <p>
+        The argument was checked numerically rather than assumed: relative prediction drift
+        under the gauge shift is <strong>3.4 × 10⁻¹²</strong>, so the algebra holds. But the
+        correction turns out to be <strong>empirically modest</strong> — raw and corrected
+        similarity matrices correlate at <strong>r = 0.969</strong>. It does not overturn any
+        conclusion below. It reaches 48% of a vector's variance only for individual outlier
+        tracks. Right to do; not load-bearing.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= A1 ================= -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-id">A1</span>
+      <h2>Modality owns the geometry</h2>
+    </div>
+
+    <p>
+      Rather than eyeballing whether PC1 "is" modality, the question becomes how predictable
+      each label is. The answer to the PC1 question is no on its own terms:
+      <strong>PC1 explains only 9.9%</strong> of variance, and the top 50 components reach just
+      51.6%. Modality is categorical and spread across many dimensions — which is also why
+      removing it later is done by subtracting modality centroids, not by deleting a component.
+    </p>
+
+    <figure>
+      <img src="figures/a1_pca_scree.png" alt="Scree plot showing PC1 at 9.9 percent and a slow cumulative rise to about 52 percent by component 50.">
+      <figcaption><b>No dominant axis.</b> Variance is distributed, so modality cannot be read off a single principal component.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="figures/a1_umap_by_modality.png" alt="Five UMAP panels, one per assay family, each highlighting that family in blue against grey. Each family occupies distinct islands.">
+      <figcaption><b>Assay type is the dominant organizing structure.</b> Each panel highlights one assay family in the same embedding. The islands are nearly disjoint.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="figures/a1_umap_by_tissue.png" alt="Ten UMAP panels, one per biosample. Each biosample appears as small tight clumps distributed across several modality islands.">
+      <figcaption><b>Tissue is sub-structure within each island, not its own cluster.</b> K562 and HepG2 tracks scatter across the modality islands — but within each island they form tight clumps. That sub-clustering is what the formal test measures.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="figures/a5_probes.png" alt="Bar chart: modality 0.939, assay family 0.952, tissue 0.311, modality from amplitude only 0.213, each against its chance rate.">
+      <figcaption><b>Both labels are decodable; they are not close.</b> Tissue at 0.311 over 71 classes is 22× chance and unambiguously real, but modality is near-ceiling. The amplitude-only control matters: a probe given just <code>‖ṽ‖</code> and the bias reaches 0.213, so the structure is genuinely directional rather than an artifact of track gain.</figcaption>
+    </figure>
+
+    <p>
+      The sharpest single number comes from nearest neighbours. Among a track's 10 nearest
+      neighbours, 76.8% share its modality — as expected. But restrict attention to the
+      neighbours of a <em>different</em> assay, and <strong>73.8% of them share its
+      biosample</strong>, against a 1.7% chance rate. That is a <strong>43× enrichment</strong>,
+      and it cannot be explained by modality clustering because it is computed only across
+      modality boundaries.
+    </p>
+  </section>
+
+  <!-- ================= A2 ================= -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-id">A2</span>
+      <h2>Similarity structure, and what happens when modality is removed</h2>
+    </div>
+
+    <p>
+      The same cosine matrix, under two orderings. Reordering is a visual aid and not a test —
+      the matrix itself is unchanged by permuting its rows, which is exactly why the formal
+      test below permutes <em>labels</em> instead.
+    </p>
+
+    <div class="fig-pair">
+      <figure>
+        <img src="figures/a2_grid_modality_first.png" alt="Similarity heatmap sorted by modality then tissue, showing strong red blocks along the diagonal.">
+        <figcaption><b>Ordered by modality.</b> Sharp diagonal blocks.</figcaption>
+      </figure>
+      <figure>
+        <img src="figures/a2_grid_tissue_first.png" alt="The same heatmap sorted by tissue then modality, showing fine-grained texture but no large diagonal blocks.">
+        <figcaption><b>Ordered by tissue.</b> No comparable block structure at this scale.</figcaption>
+      </figure>
+    </div>
+
+    <p>
+      The principled way to remove modality is to subtract each modality's centroid — regressing
+      out a categorical variable — rather than deleting PC1. Doing so makes the tissue effect
+      <strong>stronger</strong>, which is what you would expect if tissue signal is real and
+      partly masked by the dominant axis:
+    </p>
+
+    <div class="tw">
+      <table>
+        <thead>
+          <tr><th>Head vectors</th><th>Δ (tissue effect)</th><th>Cross-modality AUROC</th><th>Strata positive</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>As learned</td><td class="num">+0.0660</td><td class="num">0.6134</td><td class="num">72.1%</td></tr>
+          <tr><td>Modality centroids removed</td><td class="num hi">+0.0828</td><td class="num hi">0.6346</td><td class="num hi">73.7%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= A3 ================= -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-id">A3</span>
+      <h2>The test: same tissue, different assay</h2>
+    </div>
+
+    <p>
+      The statistic holds the <strong>ordered modality pair fixed</strong>, which is what stops
+      "RNA-seq and DNase are intrinsically more alike than RNA-seq and ChIP" from masquerading
+      as tissue structure:
+    </p>
+
+    <div class="math">
+      Δ<sub>c</sub><sup>(m₁,m₂)</sup> = E[ cos(ṽ<sub>i</sub>, ṽ<sub>j</sub>) | c<sub>i</sub>=c<sub>j</sub>=c ] − E[ cos(ṽ<sub>i</sub>, ṽ<sub>j</sub>) | c<sub>i</sub>=c, c<sub>j</sub>≠c ]
+      <span class="note">throughout, m<sub>i</sub> = m₁ and m<sub>j</sub> = m₂ with m₁ ≠ m₂</span>
+    </div>
+
+    <p>
+      Restricting to cross-modality comparisons also eliminates the duplicate-inflation worry
+      structurally rather than by filtering: the <code>_M</code>/<code>_P</code> strand splits
+      of one experiment, and replicate runs of one assay, always share a modality, so they can
+      never land inside a within-tissue block.
+    </p>
+
+    <p>
+      The null permutes tissue labels <em>within</em> modality strata, preserving modality
+      composition and per-modality tissue counts while destroying only tissue alignment.
+    </p>
+
+    <figure>
+      <img src="figures/a5_null_vs_observed.png" alt="Histogram of the permutation null tightly centered near zero, with the observed value far to the right at 0.066 and the lab-controlled null at 0.0047.">
+      <figcaption><b>The null centers on zero, confirming the permutation scheme is calibrated.</b> The observed effect sits ~200 standard deviations away. The orange line is the stricter null described in A3c.</figcaption>
+    </figure>
+
+    <div class="tw">
+      <table>
+        <thead>
+          <tr><th>Checkpoint</th><th>Biosamples</th><th>Δ</th><th>z</th><th>AUROC</th><th>Strata +</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>650M</td><td>all</td><td class="num">+0.0660</td><td class="num hi">199.3</td><td class="num">0.613</td><td class="num">72.1%</td></tr>
+          <tr><td>650M</td><td>tissues only</td><td class="num">+0.0436</td><td class="num hi">107.5</td><td class="num">0.575</td><td class="num">68.2%</td></tr>
+          <tr><td>100M</td><td>all</td><td class="num">+0.0660</td><td class="num hi">158.4</td><td class="num">0.607</td><td class="num">72.4%</td></tr>
+          <tr><td>100M</td><td>tissues only</td><td class="num">+0.0457</td><td class="num hi">87.4</td><td class="num">0.569</td><td class="num">68.0%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      The effect replicates almost exactly across a 6.5× difference in model size, and survives
+      restricting to primary tissues and cells — dropping the immortalized cell lines that
+      supply most of ENCODE's cross-modality coverage. It is not a K562-and-HepG2 artifact.
+    </p>
+
+    <figure>
+      <img src="figures/a5_delta_by_modality_pair.png" alt="Horizontal bar chart of 18 modality pairs, all with positive mean delta, ranging from about 0.005 to 0.197.">
+      <figcaption><b>Every well-supported modality pair is positive.</b> The effect is strongest between chromatin marks and weaker for pairs like H3K4me3 × DNase-seq, but it never reverses. Because the pairs span genuinely different assays, the result is not an artifact of near-duplicate assay labels.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ================= A3b/c ================= -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-id">A3b · A3c</span>
+      <h2>Is it really tissue, or is it batch?</h2>
+    </div>
+
+    <p>
+      ENCODE experiments from one lab share protocols, reagents and often donors, and
+      same-tissue tracks do cluster by lab (28.7% of same-tissue pairs share a lab, versus
+      14.0% of different-tissue pairs). This check found something that genuinely tempers the
+      headline:
+    </p>
+
+    <div class="tw">
+      <table>
+        <thead>
+          <tr><th>Cosine predicts…</th><th>AUROC</th><th>Pairs</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Same lab</td><td class="num hi">0.618</td><td class="num">all cross-modality</td></tr>
+          <tr><td>Same tissue</td><td class="num">0.566</td><td class="num">all cross-modality</td></tr>
+          <tr><td>Same tissue, <strong>cross-lab pairs only</strong></td><td class="num">0.544</td><td class="num">6,093,582</td></tr>
+          <tr><td>Same tissue, same-lab pairs only</td><td class="num">0.588</td><td class="num">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      <strong>Lab identity is encoded at least as strongly as tissue identity.</strong> That is
+      worth knowing on its own — it says the head has absorbed batch structure — and it means
+      any claim about tissue has to be made net of it.
+    </p>
+
+    <p>
+      So the decisive test permutes tissue labels within <strong>modality × lab</strong> strata,
+      holding both confounds fixed and destroying only tissue assignment:
+    </p>
+
+    <div class="tw">
+      <table>
+        <thead>
+          <tr><th>Null construction</th><th>Null mean</th><th>Observed</th><th>z</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Shuffle within modality</td><td class="num">+0.00003</td><td class="num">+0.0660</td><td class="num">199.3</td></tr>
+          <tr><td>Shuffle within modality × lab</td><td class="num">+0.00466</td><td class="num">+0.0660</td><td class="num hi">147.6</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      Holding lab fixed moves the null from zero to +0.0047 — so <strong>batch accounts for
+      about 7% of the effect</strong> — and the observed value still sits 148 standard
+      deviations above it. The same pattern holds on the 100M checkpoint (null +0.0056,
+      z = 123). Tissue structure is real, and it is not batch.
+    </p>
+  </section>
+
+  <!-- ================= VERDICT ================= -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-id">Verdict</span>
+      <h2>What this means for the critique</h2>
+    </div>
+
+    <p>
+      The architectural complaint is correct as stated: there is no inductive bias coupling
+      tracks, and the head is a bare per-track linear projection. The empirical question was
+      whether that absence shows up in the learned weights.
+    </p>
+
+    <div class="verdict">
+      <h3>The head does spontaneously factorize tissue from assay — weakly, but robustly.</h3>
+      <p>
+        Modality organizes the space almost completely (probe 0.939, near-disjoint UMAP
+        islands). Tissue is a genuine second-order structure layered inside it: 22× chance on a
+        71-way probe, a 43× enrichment among cross-modality nearest neighbours, and a
+        same-tissue alignment effect that survives holding modality and lab fixed, replicates
+        across model scale, holds on primary tissues with cell lines excluded, and is positive
+        for every well-supported assay pair.
+      </p>
+      <p>
+        The honest framing is that <em>the absolute effect is modest</em> — cross-modality AUROC
+        of 0.57–0.61, not 0.9. NTv3 has not learned a clean tissue × modality factorization. It
+        has learned enough shared biological context to be detectable far above noise, without
+        ever being told such a thing exists. That is a real argument that the inductive bias is
+        <em>missing but partially recoverable from data</em> — which, if anything, strengthens
+        the case that supplying it explicitly is worth trying.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= LIMITATIONS ================= -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-id">Limits</span>
+      <h2>What would change these numbers</h2>
+    </div>
+
+    <ul>
+      <li><strong>Donor was not resolved.</strong> Lab is a coarse batch proxy; residual donor confounding is not excluded. Lab alone accounts for ~7% of the effect, but donor could account for more.</li>
+      <li><strong>CAGE is excluded from the tissue test.</strong> FANTOM5's sample-annotation URL returns 404, so 1,276 CAGE tracks carry modality but no tissue label. Recovering those would add a genuinely distinct modality to the cross-modality comparisons.</li>
+      <li><strong>Coverage.</strong> Modality resolved for 94.7% of the 7,362 human tracks, biosample for 76.2%. 222 <code>kai*</code> tracks are of unknown provenance and unresolved throughout.</li>
+      <li><strong>ChIP-heavy support.</strong> The best-supported modality pairs are histone-mark × histone-mark, simply because ChIP-seq contributes 3,633 tracks. The effect holds for ChIP × RNA-seq and ChIP × DNase too, but with less data behind it.</li>
+      <li><strong>Not validated against real data.</strong> These are weight-space statistics. Correlating head geometry against empirical track covariation from real bigwigs would test whether it reflects biology or fitting dynamics.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Analysis over NTv3 <code>650M_post</code> and <code>100M_post</code> human functional-track
+    heads (7,362 tracks). Track metadata from the ENCODE portal. Permutation tests use 200
+    resamples, so <code>p = 0.005</code> is the attainable floor; z-scores carry the resolution.
+    Code and figures are in the accompanying repository.
+  </footer>
+
+</div>

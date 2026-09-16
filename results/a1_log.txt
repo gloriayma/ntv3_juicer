@@ -1,0 +1,20 @@
+NTv3_650M_post: 6895 tracks with resolved modality, dim 1536
+PC1 explains 9.9%; top-10 34.1%; top-50 51.6%
+
+linear probes on top-50 PCs:
+  modality                     n= 5503 classes=  20 bal.acc=0.939 (perm 0.048, chance 0.050)
+  assay family                 n= 6895 classes=   5 bal.acc=0.952 (perm 0.201, chance 0.200)
+  tissue (term_id)             n= 4894 classes=  71 bal.acc=0.311 (perm 0.012, chance 0.014)
+
+amplitude-only baseline (||v~||, bias):
+  modality from amplitude      n= 5503 classes=  20 bal.acc=0.213 (perm 0.050, chance 0.050)
+
+kNN label purity (k=10, cosine):
+  modality purity              : 0.768
+  tissue purity (all neighbours): 0.335
+  tissue purity (cross-modality neighbours only): 0.738
+  chance rate of sharing tissue : 0.017
+
+loading cached UMAP ...
+
+saved results/a1_geometry.json and figures/a1_*.png

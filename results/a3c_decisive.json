@@ -1,0 +1,34 @@
+{
+  "NTv3_100M_post::permute within modality": {
+    "observed_delta": 0.06603762399817596,
+    "null_mean": -2.2759831490196307e-05,
+    "null_sd": 0.00041706882904216964,
+    "z": 158.39204282271314,
+    "p_perm": 0.004975124378109453,
+    "n_strata": 17834
+  },
+  "NTv3_100M_post::permute within modality x lab": {
+    "observed_delta": 0.06603762399817596,
+    "null_mean": 0.005574504474274249,
+    "null_sd": 0.0004925041507432805,
+    "z": 122.76672071220435,
+    "p_perm": 0.004975124378109453,
+    "n_strata": 17834
+  },
+  "NTv3_650M_post::permute within modality": {
+    "observed_delta": 0.06599953318086978,
+    "null_mean": 2.8378895570546936e-05,
+    "null_sd": 0.0003310119573015588,
+    "z": 199.30142349872315,
+    "p_perm": 0.004975124378109453,
+    "n_strata": 17777
+  },
+  "NTv3_650M_post::permute within modality x lab": {
+    "observed_delta": 0.06599953318086978,
+    "null_mean": 0.004659812155198915,
+    "null_sd": 0.00041553421904770235,
+    "z": 147.61653364251382,
+    "p_perm": 0.004975124378109453,
+    "n_strata": 17777
+  }
+}

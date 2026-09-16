@@ -1,0 +1,223 @@
+
+==========================================================================
+NTv3_100M_post  |  all_biosamples
+==========================================================================
+tracks=3949  tissues=255  modalities=32
+cross-modality AUROC (stratified) : 0.6072   [pooled 0.5652]
+   over 376 modality-pair strata, 49,456 same-tissue pairs of 7,121,272
+running delta test with 200 within-modality permutations ...
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+  observed delta : +0.06604
+  null mean/sd   : -0.00002 / 0.00042
+  z              : +158.39
+  p (permutation): 0.00498
+  strata         : 17834
+
+  positive strata: 72.4% of 17834
+
+  top modality pairs by support:
+                                       mean_delta    n
+pair                                                  
+ChIP-seq:H3K36me3 x ChIP-seq:H3K4me3     0.054994  300
+ChIP-seq:H3K27me3 x ChIP-seq:H3K4me3     0.025982  284
+ChIP-seq:H3K4me1 x ChIP-seq:H3K4me3      0.041517  284
+ChIP-seq:H3K36me3 x ChIP-seq:H3K4me1     0.069561  282
+ChIP-seq:H3K27me3 x ChIP-seq:H3K36me3    0.075604  280
+ChIP-seq:H3K27ac x ChIP-seq:H3K4me3      0.182539  272
+ChIP-seq:H3K4me3 x ChIP-seq:H3K9me3      0.084582  268
+ChIP-seq:H3K27me3 x ChIP-seq:H3K4me1     0.056532  266
+ChIP-seq:H3K4me1 x ChIP-seq:H3K9me3      0.059422  266
+ChIP-seq:H3K36me3 x ChIP-seq:H3K9me3     0.187744  262
+ChIP-seq:H3K27me3 x ChIP-seq:H3K9me3     0.153935  260
+ChIP-seq:H3K27ac x ChIP-seq:H3K36me3     0.036782  258
+
+  strongest tissues:
+                mean_delta    n
+tissue                         
+CL:0000681        0.255902   12
+UBERON:0000088    0.243714   30
+UBERON:0001199    0.238475   30
+NTR:0001226       0.231716  110
+NTR:0003830       0.227357   12
+EFO:0007107       0.200880    2
+EFO:0001221       0.191161   72
+EFO:0005694       0.179465   72
+EFO:0005724       0.166322  210
+EFO:0005714       0.160776    2
+
+  weakest tissues:
+                mean_delta   n
+tissue                        
+UBERON:0001013   -0.009975   2
+EFO:0002783      -0.011152  12
+EFO:0005338      -0.013622   2
+EFO:0002779      -0.014312  30
+UBERON:0001870   -0.022817   2
+
+==========================================================================
+NTv3_100M_post  |  tissues_only
+==========================================================================
+tracks=2556  tissues=144  modalities=15
+cross-modality AUROC (stratified) : 0.5688   [pooled 0.5345]
+   over 98 modality-pair strata, 28,576 same-tissue pairs of 2,923,535
+running delta test with 200 within-modality permutations ...
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+  observed delta : +0.04570
+  null mean/sd   : +0.00000 / 0.00052
+  z              : +87.42
+  p (permutation): 0.00498
+  strata         : 6372
+
+  positive strata: 68.0% of 6372
+
+  top modality pairs by support:
+                                       mean_delta    n
+pair                                                  
+ChIP-seq:H3K36me3 x ChIP-seq:H3K4me3     0.047108  184
+ChIP-seq:H3K27ac x ChIP-seq:H3K4me3      0.195857  176
+ChIP-seq:H3K4me1 x ChIP-seq:H3K4me3      0.038173  176
+ChIP-seq:H3K36me3 x ChIP-seq:H3K4me1     0.063129  174
+ChIP-seq:H3K27me3 x ChIP-seq:H3K36me3    0.058280  172
+ChIP-seq:H3K27me3 x ChIP-seq:H3K4me3     0.030904  170
+ChIP-seq:H3K36me3 x ChIP-seq:H3K9me3     0.143167  168
+ChIP-seq:H3K4me3 x ChIP-seq:H3K9me3      0.078999  168
+ChIP-seq:H3K27ac x ChIP-seq:H3K36me3     0.031471  166
+ChIP-seq:H3K27me3 x ChIP-seq:H3K9me3     0.151370  166
+ChIP-seq:H3K4me1 x ChIP-seq:H3K9me3      0.066680  166
+ChIP-seq:H3K27me3 x ChIP-seq:H3K4me1     0.047196  164
+
+  strongest tissues:
+                mean_delta   n
+tissue                        
+UBERON:0000088    0.242604  30
+UBERON:0001199    0.234305  30
+NTR:0001226       0.230672  64
+UBERON:0012489    0.144056  42
+UBERON:0018112    0.139226  30
+UBERON:0000305    0.139179  42
+CL:0000900        0.126541   2
+UBERON:0012488    0.116379  30
+CL:0000127        0.108254  20
+UBERON:0003346    0.102937  42
+
+  weakest tissues:
+                mean_delta  n
+tissue                       
+UBERON:0002079   -0.006023  2
+UBERON:0001723   -0.007507  2
+UBERON:0002097   -0.008769  2
+UBERON:0001013   -0.011964  2
+UBERON:0001870   -0.021386  2
+
+==========================================================================
+NTv3_650M_post  |  all_biosamples
+==========================================================================
+tracks=3941  tissues=255  modalities=32
+cross-modality AUROC (stratified) : 0.6134   [pooled 0.5656]
+   over 376 modality-pair strata, 49,178 same-tissue pairs of 7,091,280
+running delta test with 200 within-modality permutations ...
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+  observed delta : +0.06600
+  null mean/sd   : +0.00003 / 0.00033
+  z              : +199.30
+  p (permutation): 0.00498
+  strata         : 17777
+
+  positive strata: 72.1% of 17777
+
+  top modality pairs by support:
+                                       mean_delta    n
+pair                                                  
+ChIP-seq:H3K36me3 x ChIP-seq:H3K4me3     0.058054  298
+ChIP-seq:H3K4me1 x ChIP-seq:H3K4me3      0.037600  284
+ChIP-seq:H3K27me3 x ChIP-seq:H3K4me3     0.024381  284
+ChIP-seq:H3K27me3 x ChIP-seq:H3K36me3    0.058696  280
+ChIP-seq:H3K36me3 x ChIP-seq:H3K4me1     0.058199  280
+ChIP-seq:H3K27ac x ChIP-seq:H3K4me3      0.175058  272
+ChIP-seq:H3K4me3 x ChIP-seq:H3K9me3      0.086526  268
+ChIP-seq:H3K4me1 x ChIP-seq:H3K9me3      0.045194  266
+ChIP-seq:H3K27me3 x ChIP-seq:H3K4me1     0.027303  266
+ChIP-seq:H3K36me3 x ChIP-seq:H3K9me3     0.193054  262
+ChIP-seq:H3K27me3 x ChIP-seq:H3K9me3     0.151427  260
+ChIP-seq:H3K27ac x ChIP-seq:H3K36me3     0.026519  256
+
+  strongest tissues:
+                mean_delta    n
+tissue                         
+NTR:0001226       0.241062  110
+UBERON:0001199    0.234095   30
+CL:0000681        0.232779   12
+EFO:0001221       0.219363   72
+NTR:0003830       0.213481   12
+CL:0000187        0.198850    2
+EFO:0007107       0.198599    2
+UBERON:0000088    0.183716   30
+EFO:0005694       0.183707   72
+EFO:0005724       0.177314  210
+
+  weakest tissues:
+                mean_delta   n
+tissue                        
+UBERON:0001013   -0.009188   2
+CL:0002328       -0.012775  12
+EFO:0002783      -0.012942  12
+CL:0002664       -0.018266   6
+UBERON:0001870   -0.018512   2
+
+==========================================================================
+NTv3_650M_post  |  tissues_only
+==========================================================================
+tracks=2549  tissues=144  modalities=15
+cross-modality AUROC (stratified) : 0.5755   [pooled 0.5356]
+   over 98 modality-pair strata, 28,339 same-tissue pairs of 2,906,707
+running delta test with 200 within-modality permutations ...
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+  observed delta : +0.04358
+  null mean/sd   : +0.00000 / 0.00041
+  z              : +107.54
+  p (permutation): 0.00498
+  strata         : 6358
+
+  positive strata: 68.2% of 6358
+
+  top modality pairs by support:
+                                       mean_delta    n
+pair                                                  
+ChIP-seq:H3K36me3 x ChIP-seq:H3K4me3     0.054200  182
+ChIP-seq:H3K27ac x ChIP-seq:H3K4me3      0.180945  176
+ChIP-seq:H3K4me1 x ChIP-seq:H3K4me3      0.019210  176
+ChIP-seq:H3K27me3 x ChIP-seq:H3K36me3    0.038830  172
+ChIP-seq:H3K36me3 x ChIP-seq:H3K4me1     0.054420  172
+ChIP-seq:H3K27me3 x ChIP-seq:H3K4me3     0.024967  170
+ChIP-seq:H3K4me3 x ChIP-seq:H3K9me3      0.082367  168
+ChIP-seq:H3K36me3 x ChIP-seq:H3K9me3     0.145325  168
+ChIP-seq:H3K4me1 x ChIP-seq:H3K9me3      0.051759  166
+ChIP-seq:H3K27me3 x ChIP-seq:H3K9me3     0.151378  166
+ChIP-seq:H3K27ac x ChIP-seq:H3K36me3     0.027702  164
+ChIP-seq:H3K27me3 x ChIP-seq:H3K4me1     0.022894  164
+
+  strongest tissues:
+                mean_delta   n
+tissue                        
+NTR:0001226       0.231655  64
+UBERON:0001199    0.228328  30
+UBERON:0000088    0.183741  30
+UBERON:0018112    0.152119  30
+UBERON:0012489    0.139423  42
+UBERON:0000305    0.136125  42
+CL:0000127        0.113514  20
+UBERON:0012488    0.102777  30
+CL:0000900        0.097271   2
+UBERON:0002686    0.092425  42
+
+  weakest tissues:
+                mean_delta   n
+tissue                        
+UBERON:0002079   -0.004553   2
+CL:0002547       -0.004730  12
+UBERON:0001013   -0.010792   2
+CL:0002328       -0.012544  12
+UBERON:0001870   -0.016899   2
+
+
+saved results/a3_summary.json
