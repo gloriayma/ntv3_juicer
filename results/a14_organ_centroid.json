@@ -1,0 +1,122 @@
+{
+  "650M | all_biosamples": {
+    "ChIP-seq -> RNA-seq (total + polyA)": {
+      "top1": 0.28187919463087246,
+      "chance": 0.03620141966436867,
+      "z": 16.290810614724254,
+      "n_queries": 149,
+      "n_targets": 249
+    },
+    "RNA-seq (total + polyA) -> ChIP-seq": {
+      "top1": 0.3764705882352941,
+      "chance": 0.03837096571993704,
+      "z": 23.52829915344074,
+      "n_queries": 170,
+      "n_targets": 206
+    },
+    "ChIP-seq -> DNase-seq": {
+      "top1": 0.1487603305785124,
+      "chance": 0.04942724134323674,
+      "z": 5.168341584673202,
+      "n_queries": 121,
+      "n_targets": 80
+    },
+    "DNase-seq -> RNA-seq (total + polyA)": {
+      "top1": 0.13793103448275862,
+      "chance": 0.035701761439528974,
+      "z": 4.254446326176994,
+      "n_queries": 58,
+      "n_targets": 249
+    }
+  },
+  "650M | all_biosamples | no blood": {
+    "ChIP-seq -> RNA-seq (total + polyA)": {
+      "top1": 0.19008264462809918,
+      "chance": 0.025124130919585465,
+      "z": 11.671958716251524,
+      "n_queries": 121,
+      "n_targets": 225
+    },
+    "RNA-seq (total + polyA) -> ChIP-seq": {
+      "top1": 0.3150684931506849,
+      "chance": 0.02632788362121066,
+      "z": 21.997591007798228,
+      "n_queries": 146,
+      "n_targets": 178
+    },
+    "ChIP-seq -> DNase-seq": {
+      "top1": 0.11827956989247312,
+      "chance": 0.027663192439201026,
+      "z": 5.347385487483826,
+      "n_queries": 93,
+      "n_targets": 69
+    },
+    "DNase-seq -> RNA-seq (total + polyA)": {
+      "top1": 0.0425531914893617,
+      "chance": 0.02448750422154677,
+      "z": 0.8051731855357076,
+      "n_queries": 47,
+      "n_targets": 225
+    }
+  },
+  "650M | tissues_only": {
+    "ChIP-seq -> RNA-seq (total + polyA)": {
+      "top1": 0.3684210526315789,
+      "chance": 0.03855342874291931,
+      "z": 15.2018943778414,
+      "n_queries": 76,
+      "n_targets": 184
+    },
+    "RNA-seq (total + polyA) -> ChIP-seq": {
+      "top1": 0.4954128440366973,
+      "chance": 0.04265436089294803,
+      "z": 23.93631446856957,
+      "n_queries": 109,
+      "n_targets": 116
+    },
+    "ChIP-seq -> DNase-seq": {
+      "top1": 0.15254237288135594,
+      "chance": 0.04868004681607351,
+      "z": 3.7658496602001224,
+      "n_queries": 59,
+      "n_targets": 69
+    },
+    "DNase-seq -> RNA-seq (total + polyA)": {
+      "top1": 0.14583333333333334,
+      "chance": 0.03741053397481587,
+      "z": 4.017841081425851,
+      "n_queries": 48,
+      "n_targets": 184
+    }
+  },
+  "650M | tissues_only | no blood": {
+    "ChIP-seq -> RNA-seq (total + polyA)": {
+      "top1": 0.29508196721311475,
+      "chance": 0.02490108251178056,
+      "z": 13.626795396342116,
+      "n_queries": 61,
+      "n_targets": 164
+    },
+    "RNA-seq (total + polyA) -> ChIP-seq": {
+      "top1": 0.4044943820224719,
+      "chance": 0.027714984981644233,
+      "z": 21.85432871053537,
+      "n_queries": 89,
+      "n_targets": 101
+    },
+    "ChIP-seq -> DNase-seq": {
+      "top1": 0.13636363636363635,
+      "chance": 0.03148907103825137,
+      "z": 3.999782606543577,
+      "n_queries": 44,
+      "n_targets": 61
+    },
+    "DNase-seq -> RNA-seq (total + polyA)": {
+      "top1": 0.05,
+      "chance": 0.026811499326649713,
+      "z": 0.9116559981189726,
+      "n_queries": 40,
+      "n_targets": 164
+    }
+  }
+}

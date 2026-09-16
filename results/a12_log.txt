@@ -1,0 +1,114 @@
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+650M | all_biosamples | biosample (fine)
+   tracks 4451  groups 191  AUROC 0.5560  (pooled 0.5262)
+   delta +0.01205  z +23.9   |  lab-fixed z +25.7
+      DNase-seq × RNA-seq (total + polyA)            0.6104  (n_pos 3,968)
+      ChIP-seq × DNase-seq                           0.5097  (n_pos 7,942)
+      ChIP-seq × RNA-seq (total + polyA)             0.5583  (n_pos 64,209)
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+650M | all_biosamples | organ (coarse)
+   tracks 5269  groups 86  AUROC 0.5202  (pooled 0.5106)
+   delta +0.01013  z +18.4   |  lab-fixed z +21.4
+      ChIP-seq × DNase-seq                           0.4964  (n_pos 81,750)
+      ChIP-seq × RNA-seq (total + polyA)             0.5157  (n_pos 300,011)
+      DNase-seq × RNA-seq (total + polyA)            0.6276  (n_pos 30,719)
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+650M | all_biosamples | biosample (fine) | blood bucket dropped
+   tracks 3409  groups 168  AUROC 0.5293  (pooled 0.5013)
+   delta +0.01156  z +23.0   |  lab-fixed z +22.6
+      DNase-seq × RNA-seq (total + polyA)            0.6250  (n_pos 3,412)
+      ChIP-seq × DNase-seq                           0.4780  (n_pos 5,603)
+      ChIP-seq × RNA-seq (total + polyA)             0.5276  (n_pos 22,061)
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+650M | all_biosamples | organ (coarse) | blood bucket dropped
+   tracks 4085  groups 85  AUROC 0.5109  (pooled 0.4909)
+   delta +0.01053  z +19.2   |  lab-fixed z +17.5
+      ChIP-seq × DNase-seq                           0.4532  (n_pos 29,168)
+      ChIP-seq × RNA-seq (total + polyA)             0.5262  (n_pos 75,029)
+      DNase-seq × RNA-seq (total + polyA)            0.5468  (n_pos 14,798)
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+650M | tissues_only | biosample (fine)
+   tracks 2351  groups 121  AUROC 0.5446  (pooled 0.5132)
+   delta +0.00803  z +16.8   |  lab-fixed z +14.2
+      ChIP-seq × DNase-seq                           0.4441  (n_pos 4,415)
+      DNase-seq × RNA-seq (total + polyA)            0.6316  (n_pos 3,285)
+      ChIP-seq × RNA-seq (total + polyA)             0.5598  (n_pos 10,391)
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+650M | tissues_only | organ (coarse)
+   tracks 2745  groups 66  AUROC 0.5231  (pooled 0.4983)
+   delta +0.00878  z +16.3   |  lab-fixed z +15.4
+      ChIP-seq × DNase-seq                           0.4057  (n_pos 20,036)
+      DNase-seq × RNA-seq (total + polyA)            0.6023  (n_pos 15,413)
+      ChIP-seq × RNA-seq (total + polyA)             0.5437  (n_pos 54,898)
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+650M | tissues_only | biosample (fine) | blood bucket dropped
+   tracks 2082  groups 108  AUROC 0.5471  (pooled 0.5136)
+   delta +0.00866  z +17.5   |  lab-fixed z +16.2
+      ChIP-seq × RNA-seq (total + polyA)             0.5577  (n_pos 9,441)
+      ChIP-seq × DNase-seq                           0.4470  (n_pos 3,979)
+      DNase-seq × RNA-seq (total + polyA)            0.6426  (n_pos 3,127)
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+650M | tissues_only | organ (coarse) | blood bucket dropped
+   tracks 2386  groups 65  AUROC 0.5135  (pooled 0.4863)
+   delta +0.00873  z +16.5   |  lab-fixed z +13.4
+      ChIP-seq × DNase-seq                           0.4304  (n_pos 13,678)
+      DNase-seq × RNA-seq (total + polyA)            0.5651  (n_pos 10,721)
+      ChIP-seq × RNA-seq (total + polyA)             0.5336  (n_pos 29,092)
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+100M | all_biosamples | biosample (fine)
+   tracks 4448  groups 191  AUROC 0.5414  (pooled 0.5241)
+   delta +0.01151  z +18.8   |  lab-fixed z +18.5
+      DNase-seq × RNA-seq (total + polyA)            0.5675  (n_pos 3,968)
+      ChIP-seq × DNase-seq                           0.4999  (n_pos 7,970)
+      ChIP-seq × RNA-seq (total + polyA)             0.5450  (n_pos 64,069)
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+100M | all_biosamples | organ (coarse)
+   tracks 5269  groups 86  AUROC 0.5081  (pooled 0.5030)
+   delta +0.01016  z +17.0   |  lab-fixed z +16.5
+      ChIP-seq × DNase-seq                           0.4884  (n_pos 81,620)
+      ChIP-seq × RNA-seq (total + polyA)             0.5030  (n_pos 299,269)
+      DNase-seq × RNA-seq (total + polyA)            0.6110  (n_pos 30,719)
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+100M | all_biosamples | biosample (fine) | blood bucket dropped
+   tracks 3409  groups 168  AUROC 0.5407  (pooled 0.5176)
+   delta +0.01072  z +16.8   |  lab-fixed z +14.9
+      DNase-seq × RNA-seq (total + polyA)            0.5760  (n_pos 3,412)
+      ChIP-seq × DNase-seq                           0.4866  (n_pos 5,640)
+      ChIP-seq × RNA-seq (total + polyA)             0.5491  (n_pos 22,121)
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+100M | all_biosamples | organ (coarse) | blood bucket dropped
+   tracks 4088  groups 85  AUROC 0.5105  (pooled 0.4926)
+   delta +0.01067  z +15.6   |  lab-fixed z +17.5
+      ChIP-seq × DNase-seq                           0.4567  (n_pos 29,221)
+      ChIP-seq × RNA-seq (total + polyA)             0.5305  (n_pos 75,070)
+      DNase-seq × RNA-seq (total + polyA)            0.5153  (n_pos 14,798)
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+100M | tissues_only | biosample (fine)
+   tracks 2358  groups 121  AUROC 0.5339  (pooled 0.5095)
+   delta +0.00843  z +14.2   |  lab-fixed z +12.5
+      ChIP-seq × DNase-seq                           0.4691  (n_pos 4,458)
+      DNase-seq × RNA-seq (total + polyA)            0.5892  (n_pos 3,285)
+      ChIP-seq × RNA-seq (total + polyA)             0.5441  (n_pos 10,470)
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+100M | tissues_only | organ (coarse)
+   tracks 2752  groups 66  AUROC 0.5171  (pooled 0.4976)
+   delta +0.00903  z +13.1   |  lab-fixed z +10.5
+      ChIP-seq × DNase-seq                           0.4190  (n_pos 20,083)
+      DNase-seq × RNA-seq (total + polyA)            0.5849  (n_pos 15,413)
+      ChIP-seq × RNA-seq (total + polyA)             0.5340  (n_pos 55,037)
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+100M | tissues_only | biosample (fine) | blood bucket dropped
+   tracks 2089  groups 108  AUROC 0.5343  (pooled 0.5086)
+   delta +0.00895  z +15.9   |  lab-fixed z +12.3
+      ChIP-seq × RNA-seq (total + polyA)             0.5384  (n_pos 9,520)
+      ChIP-seq × DNase-seq                           0.4697  (n_pos 4,022)
+      DNase-seq × RNA-seq (total + polyA)            0.6049  (n_pos 3,127)
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+100M | tissues_only | organ (coarse) | blood bucket dropped
+   tracks 2393  groups 65  AUROC 0.5075  (pooled 0.4844)
+   delta +0.00905  z +12.9   |  lab-fixed z +9.1
+      ChIP-seq × DNase-seq                           0.4432  (n_pos 13,725)
+      DNase-seq × RNA-seq (total + polyA)            0.5328  (n_pos 10,721)
+      ChIP-seq × RNA-seq (total + polyA)             0.5284  (n_pos 29,231)
+
+saved results/a12_organ_level.json

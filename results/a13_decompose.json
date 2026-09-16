@@ -1,0 +1,98 @@
+{
+  "650M | all_biosamples": {
+    "n_cross_assay_pairs": 7542342,
+    "1. same biosample": {
+      "mean_cos": 0.024050453677773476,
+      "n": 76119,
+      "pct_same_lab": 0.044995336249819363
+    },
+    "2. same organ, diff biosample": {
+      "mean_cos": 0.02211267501115799,
+      "n": 336361,
+      "pct_same_lab": 0.024982087697444116
+    },
+    "3. different organ": {
+      "mean_cos": 0.0213056281208992,
+      "n": 7129862,
+      "pct_same_lab": 0.035961144830012136
+    },
+    "auroc_same_biosample_vs_diff_organ": 0.5289536069554374,
+    "auroc_same_organ_vs_diff_organ": 0.5070360952864947,
+    "auroc_same_biosample_vs_same_organ": 0.5204464745975302,
+    "same_biosample_cross_lab_mean_cos": 0.024302728474140167,
+    "same_biosample_same_lab_mean_cos": 0.01869606040418148,
+    "auroc_same_biosample_vs_diff_organ_cross_lab": 0.533032488629722
+  },
+  "650M | all_biosamples | no blood bucket": {
+    "n_cross_assay_pairs": 4806090,
+    "1. same biosample": {
+      "mean_cos": 0.025252997875213623,
+      "n": 31076,
+      "pct_same_lab": 0.09840391298751448
+    },
+    "2. same organ, diff biosample": {
+      "mean_cos": 0.01985461264848709,
+      "n": 87919,
+      "pct_same_lab": 0.056142585789192324
+    },
+    "3. different organ": {
+      "mean_cos": 0.02134501375257969,
+      "n": 4687095,
+      "pct_same_lab": 0.03973335296169589
+    },
+    "auroc_same_biosample_vs_diff_organ": 0.5016116592885519,
+    "auroc_same_organ_vs_diff_organ": 0.4879265822343064,
+    "auroc_same_biosample_vs_same_organ": 0.5127580076394374,
+    "same_biosample_cross_lab_mean_cos": 0.025976181030273438,
+    "same_biosample_same_lab_mean_cos": 0.018627040088176727,
+    "auroc_same_biosample_vs_diff_organ_cross_lab": 0.5050446606002499
+  },
+  "650M | tissues_only": {
+    "n_cross_assay_pairs": 2477320,
+    "1. same biosample": {
+      "mean_cos": 0.023798439651727676,
+      "n": 18091,
+      "pct_same_lab": 0.1722956166049417
+    },
+    "2. same organ, diff biosample": {
+      "mean_cos": 0.018018927425146103,
+      "n": 72256,
+      "pct_same_lab": 0.05808514171833481
+    },
+    "3. different organ": {
+      "mean_cos": 0.01967523619532585,
+      "n": 2386973,
+      "pct_same_lab": 0.05812089202517163
+    },
+    "auroc_same_biosample_vs_diff_organ": 0.5161328368541207,
+    "auroc_same_organ_vs_diff_organ": 0.4931656018163052,
+    "auroc_same_biosample_vs_same_organ": 0.5204650320133833,
+    "same_biosample_cross_lab_mean_cos": 0.025020385161042213,
+    "same_biosample_same_lab_mean_cos": 0.017928244546055794,
+    "auroc_same_biosample_vs_diff_organ_cross_lab": 0.5247375918238116
+  },
+  "650M | tissues_only | no blood bucket": {
+    "n_cross_assay_pairs": 1906418,
+    "1. same biosample": {
+      "mean_cos": 0.023817501962184906,
+      "n": 16547,
+      "pct_same_lab": 0.16939626518402126
+    },
+    "2. same organ, diff biosample": {
+      "mean_cos": 0.017001459375023842,
+      "n": 36944,
+      "pct_same_lab": 0.07300238198354266
+    },
+    "3. different organ": {
+      "mean_cos": 0.020316002890467644,
+      "n": 1852927,
+      "pct_same_lab": 0.056776656608706115
+    },
+    "auroc_same_biosample_vs_diff_organ": 0.5151877118251278,
+    "auroc_same_organ_vs_diff_organ": 0.4726532181382361,
+    "auroc_same_biosample_vs_same_organ": 0.5376639623296481,
+    "same_biosample_cross_lab_mean_cos": 0.025052210316061974,
+    "same_biosample_same_lab_mean_cos": 0.017763342708349228,
+    "auroc_same_biosample_vs_diff_organ_cross_lab": 0.5229773370815505
+  }
+}

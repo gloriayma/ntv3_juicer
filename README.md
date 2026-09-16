@@ -17,7 +17,8 @@ weight matrix. **Nothing ties RNA-seq tracks to each other, and nothing tells th
 liver ATAC track and a liver RNA track share a tissue.** Any such structure had to be learned
 from the prediction objective alone.
 
-**Answer: it encodes tissue — but inside each assay's own frame, not as a transferable shared factor.**
+**Answer: it learns a shared organ code — one that holds across donors and assays — but it is
+faint, uneven, and not linearly transferable.**
 
 ## Headline results
 
@@ -50,6 +51,32 @@ easiest comparison rather than flattering the result.
 
 The effect is also **uneven** — DNase × RNA 0.611, ChIP × RNA 0.558, and **ChIP × DNase 0.512
 (0.447, below chance, on primary tissues only)**.
+
+### Organ biology, not sample identity
+
+ENCODE biosample terms split hairs (`liver` vs `right lobe of liver`, seven T-cell subsets,
+three aortas), so "same tissue" could mean "same specific sample" rather than "same organ".
+
+1. Regrouping by `organ_slims` **lowered** cross-assay AUROC (0.556 → 0.520), and a pairwise
+   three-way split showed same-organ/different-biosample pairs were *not* more similar than
+   different-organ pairs (AUROC 0.473–0.507). That reads as "no organ-level generalization".
+2. **That conclusion was wrong — it was underpowered.** Per-track pairwise cosine is a weak
+   instrument here; even the same-biosample cross-assay effect is only AUROC 0.50–0.53.
+
+The properly powered test is **leave-biosample-out organ matching**: one centroid per
+(organ, biosample, assay); for each query, rank target centroids *from different biosamples*
+and ask whether the nearest shares the organ. A hit cannot come from sample identity.
+Primary tissues only, blood bucket dropped:
+
+| Direction | top-1 | chance | z |
+|---|---|---|---|
+| RNA-seq → ChIP-seq | **0.404** | 0.028 | +21.9 |
+| ChIP-seq → RNA-seq | **0.295** | 0.025 | +13.6 |
+| ChIP-seq → DNase-seq | 0.136 | 0.031 | +4.0 |
+| DNase-seq → RNA-seq | 0.050 | 0.027 | +0.9 (n.s.) |
+
+So a donor- and site-independent organ code is present and shared across assays — concentrated
+in ChIP ↔ RNA, weak for ChIP ↔ DNase, absent for DNase ↔ RNA.
 
 ### Retracted from the first version
 
@@ -127,6 +154,11 @@ uv run python scripts/a9_family_mapping.py       # modality -> family/group mapp
 uv run python scripts/final_group_analysis.py    # everything at assay-GROUP level (default)
 uv run python scripts/final_group_analysis.py --split   # RNA assays kept apart
 uv run python scripts/final_figs.py
+
+uv run python scripts/a12_organ_level.py 200      # regroup by organ_slims
+uv run python scripts/a13_decompose.py            # biosample / same-organ / diff-organ split
+uv run python scripts/a14_organ_centroid.py       # leave-biosample-out organ matching
+uv run python scripts/a13_fig.py && uv run python scripts/a14_fig.py
 ```
 
 Granularity is defined in `src/ntv3_interp/grouping.py`; the full modality→group table is written
@@ -157,5 +189,10 @@ to `results/a9_modality_to_family.csv`.
   explanation at group level.
 - **Coverage.** Assay resolved for 94.7% of 7,362 human tracks, biosample for 76.2%. 222 `kai*`
   tracks are of unknown provenance.
+- **Per-track SNR is low enough to mislead.** Two analyses here pointed the wrong way before
+  being redone at centroid level. Treat any pairwise cosine result on this head as underpowered
+  until checked against an averaged version.
+- **Organ matching rests on modest query counts** — 40–89 queries per direction in the strictest
+  configuration, since it needs organs with >=2 independently-assayed biosamples.
 - **Not validated against real data.** These are weight-space statistics; correlating head
   geometry against empirical track covariation would test whether it reflects biology.

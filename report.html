@@ -239,9 +239,9 @@
     <p class="standfirst">
       NTv3 learns one linear projection per functional track, with nothing tying RNA-seq
       tracks to each other or telling the model that a liver ATAC track and a liver RNA track
-      share a tissue. <strong>It learns tissue structure anyway. The effect is small, it is
-      uneven across assay pairs, and it survives every attempt made here to explain it
-      away.</strong>
+      share a tissue. <strong>It learns a shared organ code anyway — one that holds across
+      donors and across assays. But it is faint, uneven, and does not transfer
+      linearly.</strong>
     </p>
 
     <div class="stats">
@@ -261,9 +261,9 @@
         <p class="d">Strictest grouping, lab held fixed: z = 25</p>
       </div>
       <div class="stat">
-        <p class="k">Centroid match</p>
-        <p class="v">0.392</p>
-        <p class="d">ChIP→RNA top-1 over 97 tissues, chance 0.010, nothing trained</p>
+        <p class="k">Organ code</p>
+        <p class="v">0.404</p>
+        <p class="d">RNA→ChIP top-1 organ match with the biosample held out, chance 0.028</p>
       </div>
     </div>
   </header>
@@ -638,10 +638,80 @@
     </div>
   </section>
 
-  <!-- ================= CONFOUNDS ================= -->
+  <!-- ================= GRANULARITY ================= -->
   <section>
     <div class="sec-head">
       <span class="sec-id">A5</span>
+      <h2>Is it organ biology, or just sample identity?</h2>
+    </div>
+
+    <p>
+      "Same tissue" so far means the same ENCODE biosample term, and those terms split hairs:
+      <code>liver</code> and <code>right lobe of liver</code> are different terms, as are three
+      aortas, seven CD4/CD8 T-cell subsets, and seven lung sites. That raises a sharper
+      question than the confound one — <strong>does the head encode organ biology that
+      generalizes across donors and sites, or only the identity of a particular sample?</strong>
+    </p>
+
+    <p>
+      Regrouping by ENCODE <code>organ_slims</code>, which collapses exactly those cases, gave
+      a surprise: the cross-assay AUROC went <em>down</em>, from 0.556 to 0.520 (and 0.529 to
+      0.511 with the blood bucket dropped). Splitting every cross-assay pair three ways showed
+      why — same-organ-but-different-biosample pairs are <em>not</em> more similar than
+      different-organ pairs. On that evidence there is no organ-level generalization at all.
+    </p>
+
+    <div class="callout caution">
+      <span class="lbl">Except that conclusion was wrong — it was a power problem</span>
+      <p>
+        Per-track pairwise cosine is a very weak instrument here. Even the
+        <em>same-biosample</em> cross-assay effect only reaches AUROC 0.50–0.53 pairwise, so a
+        null at the organ level says little. Averaging tracks into centroids first — the same
+        move that made the biosample-level signal obvious — changes the answer completely.
+      </p>
+    </div>
+
+    <p>
+      The properly powered test is <strong>leave-biosample-out organ matching</strong>: build
+      one centroid per (organ, biosample, assay), then for each ChIP centroid rank the RNA
+      centroids <em>from different biosamples</em> and ask whether the nearest comes from the
+      same organ. A hit cannot come from sample identity, because the querying sample is
+      excluded from the candidate pool. Chance is computed per query as the fraction of
+      eligible targets sharing its organ, so organ frequency is accounted for.
+    </p>
+
+    <figure>
+      <img src="figures/f_organ_code.png" alt="Left panel: pairwise AUROC, same biosample 0.516 and same organ 0.493, both near 0.5. Right panel: leave-biosample-out organ centroid matching, RNA to ChIP 0.404 versus chance 0.028, ChIP to RNA 0.295 versus 0.025, ChIP to DNase 0.136 versus 0.031, DNase to RNA 0.050 versus 0.027.">
+      <figcaption><b>Same question, two instruments.</b> Pairwise cosine (left) suggests no organ-level structure. Centroid matching with the biosample held out (right) finds it clearly: a liver sample's RNA centroid picks a <em>different</em> liver donor's ChIP centroid 40% of the time from 101 candidates (chance 2.8%). Primary tissues only, blood bucket dropped — the strictest configuration.</figcaption>
+    </figure>
+
+    <div class="tw">
+      <table>
+        <thead>
+          <tr><th>Direction (tissues only, no blood bucket)</th><th>top-1</th><th>chance</th><th>z</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>RNA-seq → ChIP-seq</td><td class="num hi">0.404</td><td class="num">0.028</td><td class="num hi">+21.9</td></tr>
+          <tr><td>ChIP-seq → RNA-seq</td><td class="num hi">0.295</td><td class="num">0.025</td><td class="num hi">+13.6</td></tr>
+          <tr><td>ChIP-seq → DNase-seq</td><td class="num">0.136</td><td class="num">0.031</td><td class="num">+4.0</td></tr>
+          <tr><td>DNase-seq → RNA-seq</td><td class="num lo">0.050</td><td class="num">0.027</td><td class="num lo">+0.9 (n.s.)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      So the head does carry a <strong>donor- and site-independent organ code</strong>, shared
+      across assays — concentrated in the ChIP ↔ RNA relationship, weak for ChIP ↔ DNase, and
+      absent for DNase ↔ RNA. The reason it is easy to miss is that its per-track
+      signal-to-noise is low: it takes averaging roughly a dozen tracks before it separates
+      from noise.
+    </p>
+  </section>
+
+  <!-- ================= CONFOUNDS ================= -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-id">A6</span>
       <h2>Batch, and the nearest-neighbour caveat</h2>
     </div>
 
@@ -696,29 +766,34 @@
     </p>
 
     <div class="verdict">
-      <h3>Tissue is encoded — but inside each assay's own frame, not as a shared factor.</h3>
+      <h3>A real shared organ code exists — but it is faint, uneven, and not linearly transferable.</h3>
       <p>
         Assay dominates the geometry (probe 0.999, near-disjoint UMAP islands). Tissue is
         genuinely there and is not a modality artifact: the assay label alone buys nothing
         (0.019 vs 0.015 chance), and tissue probes trained with assay held <em>constant</em>
-        reach 0.45–0.69, i.e. 14–34× chance. Across assays, same-tissue tracks are reliably
-        more aligned than different-tissue ones (Δ = +0.0121, z = 28, surviving lab controls
-        and replicating on the 100M checkpoint), and tissue centroids match across assays far
-        above chance with nothing trained.
+        reach 0.45–0.69, i.e. 14–34× chance.
       </p>
       <p>
-        But the cross-assay effect is <em>small and uneven</em>: AUROC 0.556 overall, 0.611 for
-        DNase × RNA, and <em>at chance for ChIP × DNase</em>. A tissue classifier retains only
-        7.5% of its accuracy when moved between assays. So NTv3 has not learned a clean,
-        transferable tissue × assay factorization. It has learned tissue <strong>separately
-        within each assay</strong>, with enough geometric agreement between those per-assay
-        codes to be detectable well above noise.
+        And it is <strong>organ biology, not sample identity</strong>. With the querying
+        biosample excluded from the candidate pool, a tissue's centroid in one assay finds a
+        <em>different donor's</em> centroid of the same organ in another assay far above chance
+        (top-1 0.404 vs 0.028, z = 22). That is the strongest positive evidence here, and it
+        cannot be explained by batch, by sample identity, or by assay.
       </p>
       <p>
-        That is arguably the strongest version of the original argument: the model recovers
-        some shared biological context <em>despite</em> the missing inductive bias, but not in
-        a form that transfers — which is precisely what an explicit tissue × modality
-        factorization would be expected to fix.
+        The qualifications are real, though. Per-track the effect is tiny — cross-assay pairwise
+        AUROC 0.50–0.556, which is why two reasonable-looking analyses in this report initially
+        pointed the wrong way. It is <em>uneven</em>: strong for ChIP ↔ RNA, weak for
+        ChIP ↔ DNase, absent for DNase ↔ RNA. And it does not sit in a common linear frame — a
+        tissue classifier retains only 7.5% of its accuracy when moved between assays.
+      </p>
+      <p>
+        So NTv3 has not learned a clean, transferable tissue × assay factorization. It has
+        learned a per-assay tissue code, with enough genuine organ-level agreement between
+        those codes to be recovered by averaging, but not enough for anything to transfer
+        directly. That is arguably the strongest version of the original argument: the shared
+        biological context is <em>there but latent</em> — exactly the situation where supplying
+        the factorization explicitly should help, rather than being redundant.
       </p>
     </div>
   </section>
@@ -735,6 +810,8 @@
       <li><strong>ChIP-seq is internally heterogeneous.</strong> Treating 635 targets as one group means a "within-ChIP" comparison spans H3K9me3 and CTCF. That inflates within-group variance and probably makes the cross-group contrast conservative, but it is not a clean control.</li>
       <li><strong>Donor was not resolved.</strong> Lab is a coarse batch proxy; residual donor confounding is not excluded, though lab itself is no longer a rival explanation at group level.</li>
       <li><strong>Coverage.</strong> Assay resolved for 94.7% of the 7,362 human tracks, biosample for 76.2%. 222 <code>kai*</code> tracks are of unknown provenance and unresolved throughout.</li>
+      <li><strong>Per-track SNR is low enough to mislead.</strong> Two analyses here — organ regrouping and the pairwise three-way split — pointed the wrong way before being redone at centroid level. Any future pairwise cosine result on this head should be treated as underpowered until checked against an averaged version.</li>
+      <li><strong>Organ matching rests on modest query counts.</strong> The leave-biosample-out test uses 40–89 queries per direction in the strictest configuration, because it needs organs with two or more independently-assayed biosamples. The z-scores are large, but the sample of organs is small.</li>
       <li><strong>Not validated against real data.</strong> These are weight-space statistics. Correlating head geometry against empirical track covariation from real bigwigs would test whether it reflects biology or fitting dynamics.</li>
     </ul>
   </section>
