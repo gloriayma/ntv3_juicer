@@ -1,0 +1,33 @@
+5535 tracks | families: ['ChIP-seq', 'RNA-seq', 'DNase-seq', 'polyA plus RNA-seq']
+
+[POSITIVE CONTROL] same classifier, same classes -- held-out vs transferred
+
+             train               test  n_tissues  chance  heldout_same_family  transfer  transfer_top5  chance_top5  ho_ratio  tf_ratio
+          ChIP-seq            RNA-seq         52  0.0192               0.3217    0.0321         0.1210       0.0962   16.7289    1.6667
+          ChIP-seq          DNase-seq         34  0.0294               0.3875    0.0730         0.1382       0.1471   13.1739    2.4833
+          ChIP-seq polyA plus RNA-seq         57  0.0175               0.3851    0.0357         0.1244       0.0877   21.9521    2.0359
+           RNA-seq           ChIP-seq         53  0.0189               0.5928    0.0305         0.3480       0.0943   31.4167    1.6171
+           RNA-seq          DNase-seq         20  0.0500               0.7562    0.0525         0.3869       0.2500   15.1250    1.0500
+           RNA-seq polyA plus RNA-seq         25  0.0400               0.6450    0.2865         0.7065       0.2000   16.1250    7.1625
+         DNase-seq           ChIP-seq         25  0.0400               0.7668    0.0576         0.5733       0.2000   19.1708    1.4404
+         DNase-seq            RNA-seq         15  0.0667               0.6789    0.0667         0.2762       0.3333   10.1833    1.0000
+         DNase-seq polyA plus RNA-seq         21  0.0476               0.4841    0.0572         0.3734       0.2381   10.1667    1.2015
+polyA plus RNA-seq           ChIP-seq         55  0.0182               0.5607    0.0278         0.3137       0.0909   30.8375    1.5313
+polyA plus RNA-seq            RNA-seq         25  0.0400               0.6038    0.3254         0.8128       0.2000   15.0958    8.1362
+polyA plus RNA-seq          DNase-seq         22  0.0455               0.5322    0.0070         0.1190       0.2273   11.7083    0.1538
+
+  mean held-out within family : 0.5596 (17.6x chance)
+  mean transferred across fam : 0.0877 (2.5x chance)
+  transfer retains 15.7% of within-family accuracy
+
+[CENTROID MATCHING] nothing is trained; does tissue t in family A point at tissue t in family B?
+
+                          pair  n_tissues   top1  chance_top1   top5    mrr  null_mrr       z      p
+            ChIP-seq x RNA-seq         53 0.3774       0.0189 0.7170 0.5424    0.0860 21.5383 0.0005
+          ChIP-seq x DNase-seq         35 0.4000       0.0286 0.4857 0.4522    0.1200 11.1464 0.0005
+ ChIP-seq x polyA plus RNA-seq         57 0.3684       0.0175 0.4912 0.4465    0.0808 18.4447 0.0005
+  RNA-seq x polyA plus RNA-seq         25 0.7200       0.0400 1.0000 0.8300    0.1536 16.8103 0.0005
+           DNase-seq x RNA-seq         20 0.5000       0.0500 0.6500 0.5917    0.1792  8.4702 0.0005
+DNase-seq x polyA plus RNA-seq         25 0.1200       0.0400 0.1600 0.2080    0.1515  1.4017 0.0930
+
+saved results/a10_transfer_control.json

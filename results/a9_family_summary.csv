@@ -1,0 +1,6 @@
+assay_family,tracks,distinct_modalities,biosamples
+ChIP-seq,3633,635,238
+CAGE,1276,1,0
+RNA-seq,929,1,199
+DNase-seq,573,1,221
+polyA plus RNA-seq,558,1,119

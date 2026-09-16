@@ -1,0 +1,86 @@
+
+========================================================================
+NTv3_100M_post | all_biosamples
+========================================================================
+tracks=4539 tissues=198 families=4 (DNase-seq, RNA-seq, ChIP-seq, polyA plus RNA-seq)
+cross-FAMILY AUROC (stratified) : 0.5477  [pooled 0.5199]
+   6 family-pair strata, 79,138 same-tissue of 5,608,708 pairs
+   per family pair:
+                          pair    auroc  n_pos   n_neg
+           DNase-seq x RNA-seq 0.586679   1759  289821
+          ChIP-seq x DNase-seq 0.502295   7985 1385385
+DNase-seq x polyA plus RNA-seq 0.516544   2211  253997
+            ChIP-seq x RNA-seq 0.562864  40283 1737867
+  RNA-seq x polyA plus RNA-seq 0.672678   2898  324062
+ ChIP-seq x polyA plus RNA-seq 0.522369  24002 1538438
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+  permute within family:
+    observed delta +0.02140 | null -0.000145 ± 0.001260 | z +17.1 | p 0.00498
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+  permute within family x lab:
+    observed delta +0.02140 | null -0.000267 ± 0.001050 | z +20.6 | p 0.00498
+
+========================================================================
+NTv3_100M_post | tissues_only
+========================================================================
+tracks=2399 tissues=123 families=4 (DNase-seq, ChIP-seq, polyA plus RNA-seq, RNA-seq)
+cross-FAMILY AUROC (stratified) : 0.5342  [pooled 0.5041]
+   6 family-pair strata, 19,364 same-tissue of 1,892,709 pairs
+   per family pair:
+                          pair    auroc  n_pos  n_neg
+          ChIP-seq x DNase-seq 0.472055   4458 474852
+DNase-seq x polyA plus RNA-seq 0.533197   1938 134952
+           DNase-seq x RNA-seq 0.593060   1347 165963
+ ChIP-seq x polyA plus RNA-seq 0.511390   4612 426767
+            ChIP-seq x RNA-seq 0.572814   6008 521233
+  RNA-seq x polyA plus RNA-seq 0.607001   1001 149578
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+  permute within family:
+    observed delta +0.01702 | null +0.000051 ± 0.001159 | z +14.6 | p 0.00498
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+  permute within family x lab:
+    observed delta +0.01702 | null +0.000743 ± 0.001084 | z +15.0 | p 0.00498
+
+========================================================================
+NTv3_650M_post | all_biosamples
+========================================================================
+tracks=4542 tissues=198 families=4 (DNase-seq, RNA-seq, ChIP-seq, polyA plus RNA-seq)
+cross-FAMILY AUROC (stratified) : 0.5644  [pooled 0.5226]
+   6 family-pair strata, 79,250 same-tissue of 5,613,580 pairs
+   per family pair:
+                          pair    auroc  n_pos   n_neg
+           DNase-seq x RNA-seq 0.608302   1759  289821
+          ChIP-seq x DNase-seq 0.511788   7957 1386847
+DNase-seq x polyA plus RNA-seq 0.586498   2211  253997
+            ChIP-seq x RNA-seq 0.599563  40367 1739613
+  RNA-seq x polyA plus RNA-seq 0.698684   2898  324062
+ ChIP-seq x polyA plus RNA-seq 0.501451  24058 1539990
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+  permute within family:
+    observed delta +0.02461 | null +0.000019 ± 0.000996 | z +24.7 | p 0.00498
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+  permute within family x lab:
+    observed delta +0.02461 | null +0.000231 ± 0.000854 | z +28.5 | p 0.00498
+
+========================================================================
+NTv3_650M_post | tissues_only
+========================================================================
+tracks=2392 tissues=123 families=4 (DNase-seq, ChIP-seq, polyA plus RNA-seq, RNA-seq)
+cross-FAMILY AUROC (stratified) : 0.5472  [pooled 0.5094]
+   6 family-pair strata, 19,242 same-tissue of 1,884,519 pairs
+   per family pair:
+                          pair    auroc  n_pos  n_neg
+          ChIP-seq x DNase-seq 0.446970   4415 472165
+DNase-seq x polyA plus RNA-seq 0.589499   1938 134952
+           DNase-seq x RNA-seq 0.626810   1347 165963
+ ChIP-seq x polyA plus RNA-seq 0.533224   4589 424333
+            ChIP-seq x RNA-seq 0.583921   5952 518286
+  RNA-seq x polyA plus RNA-seq 0.645044   1001 149578
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+  permute within family:
+    observed delta +0.01848 | null +0.000072 ± 0.000832 | z +22.1 | p 0.00498
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200
+  permute within family x lab:
+    observed delta +0.01848 | null +0.000797 ± 0.000832 | z +21.2 | p 0.00498
+
+saved results/a7_family_level.json

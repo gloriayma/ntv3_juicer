@@ -1,0 +1,540 @@
+{
+  "grouping": "split_rna",
+  "groups": [
+    {
+      "assay_group": "ChIP-seq",
+      "tracks": 3633,
+      "modalities": 635,
+      "biosamples": 238
+    },
+    {
+      "assay_group": "CAGE",
+      "tracks": 1276,
+      "modalities": 1,
+      "biosamples": 0
+    },
+    {
+      "assay_group": "RNA-seq",
+      "tracks": 929,
+      "modalities": 1,
+      "biosamples": 199
+    },
+    {
+      "assay_group": "DNase-seq",
+      "tracks": 573,
+      "modalities": 1,
+      "biosamples": 221
+    },
+    {
+      "assay_group": "polyA plus RNA-seq",
+      "tracks": 558,
+      "modalities": 1,
+      "biosamples": 119
+    }
+  ],
+  "probes": {
+    "assay_group_from_vectors": 0.9863123738763528,
+    "assay_group_chance": 0.25,
+    "tissue_from_vectors": 0.4415051118577085,
+    "tissue_from_group_label_only": 0.018519539854776862,
+    "tissue_chance": 0.014705882352941176,
+    "n_tissues": 68,
+    "n_tracks": 3321,
+    "within_group": [
+      {
+        "group": "ChIP-seq",
+        "n": 2268,
+        "n_tissues": 64,
+        "bal_acc": 0.44989379874058455,
+        "chance": 0.015625,
+        "ratio": 28.79320311939741
+      },
+      {
+        "group": "RNA-seq",
+        "n": 333,
+        "n_tissues": 24,
+        "bal_acc": 0.8069444444444445,
+        "chance": 0.041666666666666664,
+        "ratio": 19.366666666666667
+      },
+      {
+        "group": "polyA plus RNA-seq",
+        "n": 289,
+        "n_tissues": 32,
+        "bal_acc": 0.6651041666666666,
+        "chance": 0.03125,
+        "ratio": 21.28333333333333
+      },
+      {
+        "group": "DNase-seq",
+        "n": 226,
+        "n_tissues": 20,
+        "bal_acc": 0.6916666666666667,
+        "chance": 0.05,
+        "ratio": 13.833333333333332
+      }
+    ]
+  },
+  "knn": {
+    "buckets": {
+      "same modality": {
+        "purity": 0.20295307954976602,
+        "enrichment": 8.489373535929152,
+        "n_pairs": 31628
+      },
+      "different modality, same assay group": {
+        "purity": 0.7484738428251294,
+        "enrichment": 31.308093711663886,
+        "n_pairs": 12941
+      },
+      "different assay group": {
+        "purity": 0.46650998824911866,
+        "enrichment": 19.513759324443097,
+        "n_pairs": 851
+      }
+    },
+    "chance": 0.02390672040649617
+  },
+  "delta": {
+    "NTv3_100M_post::all_biosamples": {
+      "n_tracks": 4539,
+      "n_tissues": 198,
+      "stratified_auroc": 0.5477272956496572,
+      "pooled_auroc": 0.5199023476438617,
+      "per_pair": [
+        {
+          "pair": "DNase-seq \u00d7 RNA-seq",
+          "auroc": 0.5866788796509101,
+          "n_pos": 1759,
+          "n_neg": 289821
+        },
+        {
+          "pair": "ChIP-seq \u00d7 DNase-seq",
+          "auroc": 0.5022953330481801,
+          "n_pos": 7985,
+          "n_neg": 1385385
+        },
+        {
+          "pair": "DNase-seq \u00d7 polyA plus RNA-seq",
+          "auroc": 0.516544180026044,
+          "n_pos": 2211,
+          "n_neg": 253997
+        },
+        {
+          "pair": "ChIP-seq \u00d7 RNA-seq",
+          "auroc": 0.5628641611530741,
+          "n_pos": 40283,
+          "n_neg": 1737867
+        },
+        {
+          "pair": "RNA-seq \u00d7 polyA plus RNA-seq",
+          "auroc": 0.6726780989761866,
+          "n_pos": 2898,
+          "n_neg": 324062
+        },
+        {
+          "pair": "ChIP-seq \u00d7 polyA plus RNA-seq",
+          "auroc": 0.522368511908468,
+          "n_pos": 24002,
+          "n_neg": 1538438
+        }
+      ],
+      "within_group": {
+        "observed_delta": 0.021404555610464844,
+        "null_mean": -0.00014537551235859584,
+        "null_sd": 0.0012597319950591655,
+        "z": 17.10675858622715,
+        "p_perm": 0.004975124378109453,
+        "frac_positive": 0.7234251968503937
+      },
+      "within_group_x_lab": {
+        "observed_delta": 0.021404555610464844,
+        "null_mean": -0.0002666256538746761,
+        "null_sd": 0.0010503385697857015,
+        "z": 20.632567333751293,
+        "p_perm": 0.004975124378109453,
+        "frac_positive": 0.7234251968503937
+      }
+    },
+    "NTv3_100M_post::tissues_only": {
+      "n_tracks": 2399,
+      "n_tissues": 123,
+      "stratified_auroc": 0.5341979960022483,
+      "pooled_auroc": 0.5041179766860403,
+      "per_pair": [
+        {
+          "pair": "ChIP-seq \u00d7 DNase-seq",
+          "auroc": 0.47205473125017267,
+          "n_pos": 4458,
+          "n_neg": 474852
+        },
+        {
+          "pair": "DNase-seq \u00d7 polyA plus RNA-seq",
+          "auroc": 0.533197181648227,
+          "n_pos": 1938,
+          "n_neg": 134952
+        },
+        {
+          "pair": "DNase-seq \u00d7 RNA-seq",
+          "auroc": 0.5930603506892516,
+          "n_pos": 1347,
+          "n_neg": 165963
+        },
+        {
+          "pair": "ChIP-seq \u00d7 polyA plus RNA-seq",
+          "auroc": 0.5113898451865098,
+          "n_pos": 4612,
+          "n_neg": 426767
+        },
+        {
+          "pair": "ChIP-seq \u00d7 RNA-seq",
+          "auroc": 0.5728135975021615,
+          "n_pos": 6008,
+          "n_neg": 521233
+        },
+        {
+          "pair": "RNA-seq \u00d7 polyA plus RNA-seq",
+          "auroc": 0.6070005119564547,
+          "n_pos": 1001,
+          "n_neg": 149578
+        }
+      ],
+      "within_group": {
+        "observed_delta": 0.01702394316170562,
+        "null_mean": 5.116225097064568e-05,
+        "null_sd": 0.0011594567469993297,
+        "z": 14.638563236326391,
+        "p_perm": 0.004975124378109453,
+        "frac_positive": 0.691358024691358
+      },
+      "within_group_x_lab": {
+        "observed_delta": 0.01702394316170562,
+        "null_mean": 0.000743420677012287,
+        "null_sd": 0.0010843479645858741,
+        "z": 15.014112643178212,
+        "p_perm": 0.004975124378109453,
+        "frac_positive": 0.691358024691358
+      }
+    },
+    "NTv3_650M_post::all_biosamples": {
+      "n_tracks": 4542,
+      "n_tissues": 198,
+      "stratified_auroc": 0.5644204630728669,
+      "pooled_auroc": 0.5226486102333173,
+      "per_pair": [
+        {
+          "pair": "DNase-seq \u00d7 RNA-seq",
+          "auroc": 0.6083017221551028,
+          "n_pos": 1759,
+          "n_neg": 289821
+        },
+        {
+          "pair": "ChIP-seq \u00d7 DNase-seq",
+          "auroc": 0.5117875120195592,
+          "n_pos": 7957,
+          "n_neg": 1386847
+        },
+        {
+          "pair": "DNase-seq \u00d7 polyA plus RNA-seq",
+          "auroc": 0.5864983666913576,
+          "n_pos": 2211,
+          "n_neg": 253997
+        },
+        {
+          "pair": "ChIP-seq \u00d7 RNA-seq",
+          "auroc": 0.5995633209923645,
+          "n_pos": 40367,
+          "n_neg": 1739613
+        },
+        {
+          "pair": "RNA-seq \u00d7 polyA plus RNA-seq",
+          "auroc": 0.6986842077297796,
+          "n_pos": 2898,
+          "n_neg": 324062
+        },
+        {
+          "pair": "ChIP-seq \u00d7 polyA plus RNA-seq",
+          "auroc": 0.5014514271701707,
+          "n_pos": 24058,
+          "n_neg": 1539990
+        }
+      ],
+      "within_group": {
+        "observed_delta": 0.024610945555619972,
+        "null_mean": 1.9341896634390365e-05,
+        "null_sd": 0.0009961428309863815,
+        "z": 24.686824915092703,
+        "p_perm": 0.004975124378109453,
+        "frac_positive": 0.7362204724409449
+      },
+      "within_group_x_lab": {
+        "observed_delta": 0.024610945555619972,
+        "null_mean": 0.00023112892215577932,
+        "null_sd": 0.0008539995219556071,
+        "z": 28.547810633003508,
+        "p_perm": 0.004975124378109453,
+        "frac_positive": 0.7362204724409449
+      }
+    },
+    "NTv3_650M_post::tissues_only": {
+      "n_tracks": 2392,
+      "n_tissues": 123,
+      "stratified_auroc": 0.5471515752729965,
+      "pooled_auroc": 0.5093519653502243,
+      "per_pair": [
+        {
+          "pair": "ChIP-seq \u00d7 DNase-seq",
+          "auroc": 0.44697047703406273,
+          "n_pos": 4415,
+          "n_neg": 472165
+        },
+        {
+          "pair": "DNase-seq \u00d7 polyA plus RNA-seq",
+          "auroc": 0.5894985648224365,
+          "n_pos": 1938,
+          "n_neg": 134952
+        },
+        {
+          "pair": "DNase-seq \u00d7 RNA-seq",
+          "auroc": 0.6268099349753099,
+          "n_pos": 1347,
+          "n_neg": 165963
+        },
+        {
+          "pair": "ChIP-seq \u00d7 polyA plus RNA-seq",
+          "auroc": 0.5332241644935096,
+          "n_pos": 4589,
+          "n_neg": 424333
+        },
+        {
+          "pair": "ChIP-seq \u00d7 RNA-seq",
+          "auroc": 0.5839213802064759,
+          "n_pos": 5952,
+          "n_neg": 518286
+        },
+        {
+          "pair": "RNA-seq \u00d7 polyA plus RNA-seq",
+          "auroc": 0.6450439644458819,
+          "n_pos": 1001,
+          "n_neg": 149578
+        }
+      ],
+      "within_group": {
+        "observed_delta": 0.01847657811442609,
+        "null_mean": 7.198162137055134e-05,
+        "null_sd": 0.0008321772437793134,
+        "z": 22.116197757909717,
+        "p_perm": 0.004975124378109453,
+        "frac_positive": 0.7114197530864198
+      },
+      "within_group_x_lab": {
+        "observed_delta": 0.01847657811442609,
+        "null_mean": 0.0007968341098195522,
+        "null_sd": 0.0008319994731516086,
+        "z": 21.24970576920654,
+        "p_perm": 0.004975124378109453,
+        "frac_positive": 0.7114197530864198
+      }
+    }
+  },
+  "lab_confound": {
+    "auroc_tissue": 0.5226486102333173,
+    "auroc_lab": 0.5245959625692097,
+    "auroc_tissue_cross_lab_only": 0.5258968469777648,
+    "pct_same_tissue_share_lab": 0.049892744479495266,
+    "pct_diff_tissue_share_lab": 0.04489414256106882,
+    "n_pairs": 5613580,
+    "n_cross_lab_same_tissue": 75296
+  },
+  "transfer": {
+    "rows": [
+      {
+        "train": "ChIP-seq",
+        "test": "RNA-seq",
+        "n_tissues": 52,
+        "chance": 0.019230769230769232,
+        "heldout": 0.3217088929679588,
+        "transfer": 0.032051282051282055,
+        "ho_ratio": 16.728862434333855,
+        "tf_ratio": 1.666666666666667
+      },
+      {
+        "train": "ChIP-seq",
+        "test": "DNase-seq",
+        "n_tissues": 34,
+        "chance": 0.029411764705882353,
+        "heldout": 0.387466907698221,
+        "transfer": 0.07303921568627451,
+        "ho_ratio": 13.173874861739515,
+        "tf_ratio": 2.4833333333333334
+      },
+      {
+        "train": "ChIP-seq",
+        "test": "polyA plus RNA-seq",
+        "n_tissues": 57,
+        "chance": 0.017543859649122806,
+        "heldout": 0.38512403712189086,
+        "transfer": 0.03571830216567059,
+        "ho_ratio": 21.95207011594778,
+        "tf_ratio": 2.0359432234432235
+      },
+      {
+        "train": "RNA-seq",
+        "test": "ChIP-seq",
+        "n_tissues": 53,
+        "chance": 0.018867924528301886,
+        "heldout": 0.5927672955974843,
+        "transfer": 0.03051077027331368,
+        "ho_ratio": 31.416666666666668,
+        "tf_ratio": 1.6170708244856251
+      },
+      {
+        "train": "RNA-seq",
+        "test": "DNase-seq",
+        "n_tissues": 20,
+        "chance": 0.05,
+        "heldout": 0.7562499999999999,
+        "transfer": 0.052500000000000005,
+        "ho_ratio": 15.124999999999996,
+        "tf_ratio": 1.05
+      },
+      {
+        "train": "RNA-seq",
+        "test": "polyA plus RNA-seq",
+        "n_tissues": 25,
+        "chance": 0.04,
+        "heldout": 0.645,
+        "transfer": 0.2865,
+        "ho_ratio": 16.125,
+        "tf_ratio": 7.1625
+      },
+      {
+        "train": "DNase-seq",
+        "test": "ChIP-seq",
+        "n_tissues": 25,
+        "chance": 0.04,
+        "heldout": 0.7668333333333333,
+        "transfer": 0.05761463373228079,
+        "ho_ratio": 19.17083333333333,
+        "tf_ratio": 1.4403658433070197
+      },
+      {
+        "train": "DNase-seq",
+        "test": "RNA-seq",
+        "n_tissues": 15,
+        "chance": 0.06666666666666667,
+        "heldout": 0.6788888888888889,
+        "transfer": 0.06666666666666667,
+        "ho_ratio": 10.183333333333334,
+        "tf_ratio": 1.0
+      },
+      {
+        "train": "DNase-seq",
+        "test": "polyA plus RNA-seq",
+        "n_tissues": 21,
+        "chance": 0.047619047619047616,
+        "heldout": 0.48412698412698413,
+        "transfer": 0.05721262864120007,
+        "ho_ratio": 10.166666666666666,
+        "tf_ratio": 1.2014652014652014
+      },
+      {
+        "train": "polyA plus RNA-seq",
+        "test": "ChIP-seq",
+        "n_tissues": 55,
+        "chance": 0.01818181818181818,
+        "heldout": 0.5606818181818182,
+        "transfer": 0.027841479600890735,
+        "ho_ratio": 30.8375,
+        "tf_ratio": 1.5312813780489904
+      },
+      {
+        "train": "polyA plus RNA-seq",
+        "test": "RNA-seq",
+        "n_tissues": 25,
+        "chance": 0.04,
+        "heldout": 0.6038333333333333,
+        "transfer": 0.32544705046197586,
+        "ho_ratio": 15.095833333333333,
+        "tf_ratio": 8.136176261549396
+      },
+      {
+        "train": "polyA plus RNA-seq",
+        "test": "DNase-seq",
+        "n_tissues": 22,
+        "chance": 0.045454545454545456,
+        "heldout": 0.5321969696969697,
+        "transfer": 0.006993006993006993,
+        "ho_ratio": 11.708333333333334,
+        "tf_ratio": 0.15384615384615385
+      }
+    ],
+    "mean_heldout": 0.5595732050789068,
+    "mean_transfer": 0.08767458635604684,
+    "mean_heldout_ratio": 17.640331173223984,
+    "mean_transfer_ratio": 2.456554073845467,
+    "retention": 0.15668117336619725
+  },
+  "centroid_matching": [
+    {
+      "pair": "ChIP-seq \u00d7 RNA-seq",
+      "n_tissues": 53,
+      "top1": 0.37735849056603776,
+      "chance_top1": 0.018867924528301886,
+      "top5": 0.7169811320754716,
+      "mrr": 0.5423646487573995,
+      "z": 21.5383078947169,
+      "p": 0.0004997501249375312
+    },
+    {
+      "pair": "ChIP-seq \u00d7 DNase-seq",
+      "n_tissues": 35,
+      "top1": 0.4,
+      "chance_top1": 0.02857142857142857,
+      "top5": 0.4857142857142857,
+      "mrr": 0.45217215099205826,
+      "z": 11.146394363119418,
+      "p": 0.0004997501249375312
+    },
+    {
+      "pair": "ChIP-seq \u00d7 polyA plus RNA-seq",
+      "n_tissues": 57,
+      "top1": 0.3684210526315789,
+      "chance_top1": 0.017543859649122806,
+      "top5": 0.49122807017543857,
+      "mrr": 0.4465267143303941,
+      "z": 18.4446752807381,
+      "p": 0.0004997501249375312
+    },
+    {
+      "pair": "RNA-seq \u00d7 polyA plus RNA-seq",
+      "n_tissues": 25,
+      "top1": 0.72,
+      "chance_top1": 0.04,
+      "top5": 1.0,
+      "mrr": 0.83,
+      "z": 16.81033483420238,
+      "p": 0.0004997501249375312
+    },
+    {
+      "pair": "DNase-seq \u00d7 RNA-seq",
+      "n_tissues": 20,
+      "top1": 0.5,
+      "chance_top1": 0.05,
+      "top5": 0.65,
+      "mrr": 0.5916800070844188,
+      "z": 8.47024084149394,
+      "p": 0.0004997501249375312
+    },
+    {
+      "pair": "DNase-seq \u00d7 polyA plus RNA-seq",
+      "n_tissues": 25,
+      "top1": 0.12,
+      "chance_top1": 0.04,
+      "top5": 0.16,
+      "mrr": 0.20796293118646056,
+      "z": 1.4016757599514418,
+      "p": 0.09295352323838081
+    }
+  ]
+}

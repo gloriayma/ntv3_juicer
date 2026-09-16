@@ -1,0 +1,125 @@
+============================================================================
+ASSAY GROUPING: split_rna
+============================================================================
+                    tracks  modalities  biosamples
+assay_group                                       
+ChIP-seq              3633         635         238
+CAGE                  1276           1           0
+RNA-seq                929           1         199
+DNase-seq              573           1         221
+polyA plus RNA-seq     558           1         119
+
+============================================================================
+[1] PROBES (650M, all biosamples)
+============================================================================
+  assay group from vectors     0.9863 (chance 0.2500)
+  tissue  from vectors         0.4415 (chance 0.0147, 68 classes)
+  tissue  from GROUP LABEL only 0.0185   <- the confound ceiling
+
+  tissue probes WITHIN each group (group held constant):
+             group    n  n_tissues  bal_acc  chance   ratio
+          ChIP-seq 2268         64   0.4499  0.0156 28.7932
+           RNA-seq  333         24   0.8069  0.0417 19.3667
+polyA plus RNA-seq  289         32   0.6651  0.0312 21.2833
+         DNase-seq  226         20   0.6917  0.0500 13.8333
+
+============================================================================
+[2] kNN TISSUE PURITY BY NEIGHBOUR DISTANCE
+============================================================================
+  same modality                            0.203  (  8.5x)  n=31,628
+  different modality, same assay group     0.748  ( 31.3x)  n=12,941
+  different assay group                    0.467  ( 19.5x)  n=851
+  chance                                   0.024
+
+============================================================================
+[3] CROSS-GROUP DELTA TEST
+============================================================================
+
+  NTv3_100M_post | all_biosamples | 4539 tracks, 198 tissues
+    cross-group AUROC (stratified) 0.5477
+                          pair    auroc  n_pos   n_neg
+           DNase-seq × RNA-seq 0.586679   1759  289821
+          ChIP-seq × DNase-seq 0.502295   7985 1385385
+DNase-seq × polyA plus RNA-seq 0.516544   2211  253997
+            ChIP-seq × RNA-seq 0.562864  40283 1737867
+  RNA-seq × polyA plus RNA-seq 0.672678   2898  324062
+ ChIP-seq × polyA plus RNA-seq 0.522369  24002 1538438
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    permute within_group         delta +0.02140  null -0.000145  z +17.1  p 0.00498
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    permute within_group_x_lab   delta +0.02140  null -0.000267  z +20.6  p 0.00498
+
+  NTv3_100M_post | tissues_only | 2399 tracks, 123 tissues
+    cross-group AUROC (stratified) 0.5342
+                          pair    auroc  n_pos  n_neg
+          ChIP-seq × DNase-seq 0.472055   4458 474852
+DNase-seq × polyA plus RNA-seq 0.533197   1938 134952
+           DNase-seq × RNA-seq 0.593060   1347 165963
+ ChIP-seq × polyA plus RNA-seq 0.511390   4612 426767
+            ChIP-seq × RNA-seq 0.572814   6008 521233
+  RNA-seq × polyA plus RNA-seq 0.607001   1001 149578
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    permute within_group         delta +0.01702  null +0.000051  z +14.6  p 0.00498
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    permute within_group_x_lab   delta +0.01702  null +0.000743  z +15.0  p 0.00498
+
+  NTv3_650M_post | all_biosamples | 4542 tracks, 198 tissues
+    cross-group AUROC (stratified) 0.5644
+                          pair    auroc  n_pos   n_neg
+           DNase-seq × RNA-seq 0.608302   1759  289821
+          ChIP-seq × DNase-seq 0.511788   7957 1386847
+DNase-seq × polyA plus RNA-seq 0.586498   2211  253997
+            ChIP-seq × RNA-seq 0.599563  40367 1739613
+  RNA-seq × polyA plus RNA-seq 0.698684   2898  324062
+ ChIP-seq × polyA plus RNA-seq 0.501451  24058 1539990
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    permute within_group         delta +0.02461  null +0.000019  z +24.7  p 0.00498
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    permute within_group_x_lab   delta +0.02461  null +0.000231  z +28.5  p 0.00498
+
+  NTv3_650M_post | tissues_only | 2392 tracks, 123 tissues
+    cross-group AUROC (stratified) 0.5472
+                          pair    auroc  n_pos  n_neg
+          ChIP-seq × DNase-seq 0.446970   4415 472165
+DNase-seq × polyA plus RNA-seq 0.589499   1938 134952
+           DNase-seq × RNA-seq 0.626810   1347 165963
+ ChIP-seq × polyA plus RNA-seq 0.533224   4589 424333
+            ChIP-seq × RNA-seq 0.583921   5952 518286
+  RNA-seq × polyA plus RNA-seq 0.645044   1001 149578
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    permute within_group         delta +0.01848  null +0.000072  z +22.1  p 0.00498
+    perm 50/200    perm 100/200    perm 150/200    perm 200/200    permute within_group_x_lab   delta +0.01848  null +0.000797  z +21.2  p 0.00498
+
+============================================================================
+[4] LAB / BATCH CONFOUND (cross-group pairs only)
+============================================================================
+  auroc_tissue                       0.5226486102333173
+  auroc_lab                          0.5245959625692097
+  auroc_tissue_cross_lab_only        0.5258968469777648
+  pct_same_tissue_share_lab          0.049892744479495266
+  pct_diff_tissue_share_lab          0.04489414256106882
+  n_pairs                            5613580
+  n_cross_lab_same_tissue            75296
+
+============================================================================
+[5] TRANSFER POSITIVE CONTROL & CENTROID MATCHING
+============================================================================
+             train               test  n_tissues  chance  heldout  transfer  ho_ratio  tf_ratio
+          ChIP-seq            RNA-seq         52  0.0192   0.3217    0.0321   16.7289    1.6667
+          ChIP-seq          DNase-seq         34  0.0294   0.3875    0.0730   13.1739    2.4833
+          ChIP-seq polyA plus RNA-seq         57  0.0175   0.3851    0.0357   21.9521    2.0359
+           RNA-seq           ChIP-seq         53  0.0189   0.5928    0.0305   31.4167    1.6171
+           RNA-seq          DNase-seq         20  0.0500   0.7562    0.0525   15.1250    1.0500
+           RNA-seq polyA plus RNA-seq         25  0.0400   0.6450    0.2865   16.1250    7.1625
+         DNase-seq           ChIP-seq         25  0.0400   0.7668    0.0576   19.1708    1.4404
+         DNase-seq            RNA-seq         15  0.0667   0.6789    0.0667   10.1833    1.0000
+         DNase-seq polyA plus RNA-seq         21  0.0476   0.4841    0.0572   10.1667    1.2015
+polyA plus RNA-seq           ChIP-seq         55  0.0182   0.5607    0.0278   30.8375    1.5313
+polyA plus RNA-seq            RNA-seq         25  0.0400   0.6038    0.3254   15.0958    8.1362
+polyA plus RNA-seq          DNase-seq         22  0.0455   0.5322    0.0070   11.7083    0.1538
+
+  mean held-out 0.5596 (17.6x) | mean transfer 0.0877 (2.5x) | retention 15.7%
+
+  centroid matching (nothing trained):
+                          pair  n_tissues   top1  chance_top1   top5    mrr       z      p
+            ChIP-seq × RNA-seq         53 0.3774       0.0189 0.7170 0.5424 21.5383 0.0005
+          ChIP-seq × DNase-seq         35 0.4000       0.0286 0.4857 0.4522 11.1464 0.0005
+ ChIP-seq × polyA plus RNA-seq         57 0.3684       0.0175 0.4912 0.4465 18.4447 0.0005
+  RNA-seq × polyA plus RNA-seq         25 0.7200       0.0400 1.0000 0.8300 16.8103 0.0005
+           DNase-seq × RNA-seq         20 0.5000       0.0500 0.6500 0.5917  8.4702 0.0005
+DNase-seq × polyA plus RNA-seq         25 0.1200       0.0400 0.1600 0.2080  1.4017 0.0930
+
+saved results/final_split_rna.json

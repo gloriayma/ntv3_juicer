@@ -17,20 +17,45 @@ weight matrix. **Nothing ties RNA-seq tracks to each other, and nothing tells th
 liver ATAC track and a liver RNA track share a tissue.** Any such structure had to be learned
 from the prediction objective alone.
 
-**Answer: it emerges anyway — but modality dominates, and tissue is a second-order effect.**
+**Answer: it encodes tissue — but inside each assay's own frame, not as a transferable shared factor.**
 
 ## Headline results
 
+All numbers at **assay-group** level (ChIP-seq / RNA-seq / DNase-seq / CAGE), 650M checkpoint.
+
 | Question | Answer |
 |---|---|
-| Does the head cluster by modality? | Overwhelmingly. Linear probe **0.939** balanced accuracy over 20 assay types (chance 0.05). |
-| Does it also encode tissue? | Yes. Probe **0.311** over 71 tissues (chance 0.014, 22× chance). |
-| Same tissue ⇒ more aligned, modality held fixed? | **Δ = +0.066, z = +199, p < 0.005.** Replicates on both checkpoints. |
-| Is it just batch/lab? | No. Holding lab fixed too, the null moves to +0.0047 — **7% of the effect** — leaving z = +148. |
-| Is it just track amplitude? | No. Amplitude-only probe gets 0.213 vs 0.939 for the full vector. |
+| Does the head cluster by assay? | Essentially perfectly. Probe **0.999** (chance 0.333). |
+| Is the tissue signal just a modality shortcut? | No. Tissue from the **assay label alone** = 0.019 vs 0.015 chance. |
+| Tissue with assay held constant? | **0.45–0.69** balanced accuracy within a single assay (14–34× chance). |
+| Same tissue ⇒ more aligned across assays? | **Δ = +0.0121, z = +28**, p < 0.005. Replicates on 100M. |
+| Is it batch? | No. Same-lab AUROC 0.523 vs same-tissue 0.527; cross-lab-only tissue 0.531; z = 24.9 holding lab fixed. |
+| Does a tissue classifier transfer across assays? | **Barely — 7.5% retention**, despite being competent within assay (24× chance). |
+| Do tissue centroids align across assays? | **Yes, strongly.** ChIP→RNA top-1 **0.392** over 97 tissues (chance 0.010), nothing trained. |
 
-Among the 10 nearest neighbours of a track, **73.8% of the different-assay neighbours share its
-biosample**, against a 1.7% chance rate — a **43× enrichment**.
+### Granularity matters — this corrects the first version
+
+"Different modality" was originally `assay:target`, but **635 of the ~639 modality labels are
+ChIP-seq targets**, so that aggregate was mostly ChIP-vs-ChIP. Recomputed properly:
+
+| Comparison level | Δ | z | AUROC |
+|---|---|---|---|
+| Cross fine-modality (mostly ChIP × ChIP) | +0.0660 | 199 | 0.613 |
+| Cross assay family (RNA-seq, polyA kept apart) | +0.0246 | 24.7 | 0.564 |
+| **Cross assay group (RNA assays merged — strictest)** | **+0.0121** | **28.2** | **0.556** |
+
+RNA-seq and polyA-plus-RNA-seq are merged deliberately: they measure the same thing with
+different library prep and were the most similar pair in every analysis, so merging removes the
+easiest comparison rather than flattering the result.
+
+The effect is also **uneven** — DNase × RNA 0.611, ChIP × RNA 0.558, and **ChIP × DNase 0.512
+(0.447, below chance, on primary tissues only)**.
+
+### Retracted from the first version
+
+"73.8% of cross-modality neighbours share tissue, 43× chance" rested on ChIP-target-vs-ChIP-target
+pairs. At group level it is 0.750 (31×) but on **only 128 neighbour pairs** — too thin to headline.
+Superseded by centroid matching, which uses every tissue.
 
 ## The preprocessing correction
 
@@ -97,7 +122,15 @@ uv run python scripts/a3_tissue.py 200           # the headline test
 uv run python scripts/a3b_confounds.py           # lab/batch confound
 uv run python scripts/a3c_decisive.py 200        # permute within modality x lab
 uv run python scripts/a5_summary_figs.py
+
+uv run python scripts/a9_family_mapping.py       # modality -> family/group mapping
+uv run python scripts/final_group_analysis.py    # everything at assay-GROUP level (default)
+uv run python scripts/final_group_analysis.py --split   # RNA assays kept apart
+uv run python scripts/final_figs.py
 ```
+
+Granularity is defined in `src/ntv3_interp/grouping.py`; the full modality→group table is written
+to `results/a9_modality_to_family.csv`.
 
 ## Method notes
 
@@ -114,14 +147,15 @@ uv run python scripts/a5_summary_figs.py
 
 ## Limitations
 
-- Lab is a coarse batch proxy; ENCODE donor was not resolved, so residual donor confounding is not
-  excluded. Lab-only accounts for ~7% of the effect.
-- FANTOM5's sample annotation URL 404s, so the 1,276 CAGE tracks carry modality but no tissue and
-  are excluded from the tissue test.
-- 222 `kai*` tracks are of unknown provenance and are unresolved throughout.
-- Absolute effect sizes are modest (cross-modality AUROC 0.57–0.61). The claim is that tissue
-  structure is *present and robust*, not that it is strong.
-- `RNA-seq` and `polyA plus RNA-seq` are counted as distinct modalities though they are near
-  neighbours biologically; the per-pair breakdown shows the effect holds across genuinely
-  different assays (distinct histone marks, ChIP × RNA-seq, ChIP × DNase), so this does not drive
-  the result.
+- **Only three assay groups enter the tissue test.** CAGE has no resolvable biosample labels
+  (FANTOM5's annotation URL 404s), so cross-group evidence rests on ChIP-seq, RNA-seq and
+  DNase-seq — three pairs, one of which is null.
+- **ChIP-seq is internally heterogeneous.** Treating 635 targets as one group means "within-ChIP"
+  spans H3K9me3 and CTCF. Probably makes the cross-group contrast conservative, but it is not a
+  clean control.
+- **Donor was not resolved.** Lab is a coarse batch proxy, though lab is no longer a rival
+  explanation at group level.
+- **Coverage.** Assay resolved for 94.7% of 7,362 human tracks, biosample for 76.2%. 222 `kai*`
+  tracks are of unknown provenance.
+- **Not validated against real data.** These are weight-space statistics; correlating head
+  geometry against empirical track covariation would test whether it reflects biology.

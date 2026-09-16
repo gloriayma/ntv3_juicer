@@ -1,0 +1,57 @@
+3534 tracks | 70 tissues | 623 modalities | 4 assay families | chance 0.0143
+
+[1] How much tissue is obtainable from the MODALITY LABEL alone?
+    tissue from modality one-hot ONLY : 0.0214
+    tissue from head vectors (50 PCs) : 0.4611
+    majority-class dummy              : 0.0143   chance 0.0143
+    normalized MI(modality; tissue)   : 0.2865
+
+[2] Tissue probes trained WITHIN each modality (modality held constant)
+          modality   n  n_tissues  bal_acc  chance  ratio_vs_chance
+           RNA-seq 333         24   0.8125  0.0417          19.5000
+polyA plus RNA-seq 289         32   0.6849  0.0312          21.9167
+         DNase-seq 226         20   0.6767  0.0500          13.5333
+
+    median accuracy / chance across modalities: 19.5x
+
+[3] CROSS-FAMILY TRANSFER: train tissue classifier on one assay family, test on another
+
+  -- feature space: as learned --
+             train               test  n_train  n_test  n_tissues  bal_acc  chance  ratio
+          ChIP-seq            RNA-seq     1516     377         35   0.0386  0.0286 1.3500
+          ChIP-seq polyA plus RNA-seq     1812     305         40   0.0519  0.0250 2.0766
+          ChIP-seq          DNase-seq     1032     226         29   0.0695  0.0345 2.0167
+           RNA-seq           ChIP-seq      377    1516         35   0.0513  0.0286 1.7963
+           RNA-seq polyA plus RNA-seq      219     181         21   0.3696  0.0476 7.7614
+           RNA-seq          DNase-seq      211     129         18   0.0668  0.0556 1.2020
+polyA plus RNA-seq           ChIP-seq      305    1812         40   0.0608  0.0250 2.4332
+polyA plus RNA-seq            RNA-seq      181     219         21   0.3182  0.0476 6.6821
+polyA plus RNA-seq          DNase-seq      162     187         18   0.0417  0.0556 0.7500
+         DNase-seq           ChIP-seq      226    1032         29   0.0571  0.0345 1.6550
+         DNase-seq            RNA-seq      129     211         18   0.0556  0.0556 1.0000
+         DNase-seq polyA plus RNA-seq      187     162         18   0.0557  0.0556 1.0018
+    mean bal_acc 0.1031 | mean chance 0.0411 | median ratio 1.7x | pairs above chance: 10/12
+
+  -- feature space: modality centroids removed --
+             train               test  n_train  n_test  n_tissues  bal_acc  chance  ratio
+          ChIP-seq            RNA-seq     1516     377         35   0.0357  0.0286 1.2500
+          ChIP-seq polyA plus RNA-seq     1812     305         40   0.0418  0.0250 1.6711
+          ChIP-seq          DNase-seq     1032     226         29   0.0650  0.0345 1.8857
+           RNA-seq           ChIP-seq      377    1516         35   0.0444  0.0286 1.5540
+           RNA-seq polyA plus RNA-seq      219     181         21   0.3840  0.0476 8.0639
+           RNA-seq          DNase-seq      211     129         18   0.1128  0.0556 2.0303
+polyA plus RNA-seq           ChIP-seq      305    1812         40   0.0847  0.0250 3.3876
+polyA plus RNA-seq            RNA-seq      181     219         21   0.3575  0.0476 7.5071
+polyA plus RNA-seq          DNase-seq      162     187         18   0.1055  0.0556 1.8983
+         DNase-seq           ChIP-seq      226    1032         29   0.0681  0.0345 1.9743
+         DNase-seq            RNA-seq      129     211         18   0.0787  0.0556 1.4167
+         DNase-seq polyA plus RNA-seq      187     162         18   0.0560  0.0556 1.0073
+    mean bal_acc 0.1195 | mean chance 0.0411 | median ratio 1.9x | pairs above chance: 12/12
+
+[4] kNN tissue enrichment, split by how far the neighbour is from the query
+    same modality                              purity 0.293  (  7.2x chance)  n=20,511
+    different modality, same assay family      purity 0.802  ( 19.6x chance)  n=14,077
+    different assay family                     purity 0.561  ( 13.7x chance)  n=752
+    chance rate of sharing a tissue            0.041
+
+saved results/a6_probe_confound.json

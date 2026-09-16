@@ -1,0 +1,71 @@
+7362 human tracks | 6969 with a resolved assay (94.7%)
+
+ASSAY FAMILIES
+                    tracks  distinct_modalities  biosamples
+assay_family                                               
+ChIP-seq              3633                  635         238
+CAGE                  1276                    1           0
+RNA-seq                929                    1         199
+DNase-seq              573                    1         221
+polyA plus RNA-seq     558                    1         119
+
+
+MODALITIES WITHIN EACH FAMILY
+
+========================================================================
+ChIP-seq  —  3633 tracks, 635 distinct modalities
+========================================================================
+  H3K4me3                              321 tracks    188 biosamples
+  H3K36me3                             266 tracks    160 biosamples
+  H3K27me3                             257 tracks    153 biosamples
+  H3K4me1                              255 tracks    151 biosamples
+  H3K9me3                              249 tracks    147 biosamples
+  H3K27ac                              225 tracks    148 biosamples
+  CTCF                                 201 tracks    122 biosamples
+  H3K9ac                                94 tracks     74 biosamples
+  POLR2A                                85 tracks     37 biosamples
+  H2AFZ                                 45 tracks     44 biosamples
+  POLR2AphosphoS5                       45 tracks     27 biosamples
+  H3K4me2                               40 tracks     40 biosamples
+  H3K79me2                              36 tracks     35 biosamples
+  H4K20me1                              36 tracks     36 biosamples
+  EP300                                 27 tracks     15 biosamples
+  REST                                  21 tracks     13 biosamples
+  EZH2                                  18 tracks     18 biosamples
+  H3F3A                                 16 tracks     16 biosamples
+  H3K9me2                               16 tracks     16 biosamples
+  EZH2phosphoT487                       14 tracks     14 biosamples
+  JUND                                  14 tracks     10 biosamples
+  RAD21                                 14 tracks      9 biosamples
+  YY1                                   14 tracks     11 biosamples
+  GABPA                                 12 tracks      9 biosamples
+  FOXA1                                 11 tracks      7 biosamples
+  MYC                                   11 tracks      5 biosamples
+  TAF1                                  11 tracks     11 biosamples
+  NR3C1                                 10 tracks      3 biosamples
+  SIN3A                                 10 tracks      7 biosamples
+  HDAC2                                  9 tracks      5 biosamples
+  ... 605 further targets, 1250 tracks (full list in results/a9_modality_to_family.csv)
+
+========================================================================
+CAGE  —  1276 tracks, 1 distinct modalities
+========================================================================
+  (no target)                         1276 tracks      0 biosamples
+
+========================================================================
+RNA-seq  —  929 tracks, 1 distinct modalities
+========================================================================
+  (no target)                          929 tracks    199 biosamples
+
+========================================================================
+DNase-seq  —  573 tracks, 1 distinct modalities
+========================================================================
+  (no target)                          573 tracks    221 biosamples
+
+========================================================================
+polyA plus RNA-seq  —  558 tracks, 1 distinct modalities
+========================================================================
+  (no target)                          558 tracks    119 biosamples
+
+
+saved results/a9_modality_to_family.csv and results/a9_family_summary.csv
