@@ -1,0 +1,36 @@
+{
+  "null_stratified_by_target": {
+    "observed_delta": 0.02175910016391877,
+    "n_cells": 618,
+    "n_tissues": 224,
+    "n_modality_pairs": 10,
+    "frac_cells_positive": 0.7588996763754046,
+    "null_mean": -8.732024349090604e-05,
+    "null_sd": 0.0005220689263400024,
+    "z_vs_null": 41.845854647135205,
+    "p_permutation": 0.000999000999000999,
+    "n_perm": 1000,
+    "cohen_d_pooled": 0.504130591988704,
+    "auc_approx": 0.6392572500118141,
+    "tissue_col": "tissue_strict",
+    "modality_col": "modality_coarse",
+    "strata": "modality_coarse,experiment_target"
+  },
+  "target_free_modalities": {
+    "observed_delta": 0.011789380650605934,
+    "n_cells": 131,
+    "n_tissues": 125,
+    "n_modality_pairs": 3,
+    "frac_cells_positive": 0.7633587786259542,
+    "null_mean": 1.4260828275861396e-05,
+    "null_sd": 0.0006924524339008098,
+    "z_vs_null": 17.004951164655445,
+    "p_permutation": 0.000999000999000999,
+    "n_perm": 1000,
+    "cohen_d_pooled": 0.5873012855122081,
+    "auc_approx": 0.6610332577700913,
+    "tissue_col": "tissue_strict",
+    "modality_col": "modality_coarse",
+    "strata": "modality_coarse"
+  }
+}

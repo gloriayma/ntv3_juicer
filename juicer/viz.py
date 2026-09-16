@@ -105,11 +105,18 @@ def annotate(ax, text: str) -> None:
     Re-sets the existing title with extra padding so the note sits below the title
     rather than colliding with it.
     """
-    title = ax.get_title()
+    # use_style() sets axes.titlelocation="left", so set_title writes the LEFT title
+    # artist while get_title() defaults to reading the CENTER one (which is empty).
+    # Read and rewrite the title at its actual location or the pad is silently lost.
+    loc = mpl.rcParams.get("axes.titlelocation", "center")
+    title = ax.get_title(loc=loc)
     if title:
-        ax.set_title(title, pad=22)
-    ax.text(0.0, 1.008, text, transform=ax.transAxes, fontsize=8,
-            color=TEXT_MUTED, ha="left", va="bottom")
+        ax.set_title(title, loc=loc, pad=26)
+    # offset in points, not axes fraction, so the gap is the same regardless of
+    # how tall the axes happens to be
+    ax.annotate(text, xy=(0.0, 1.0), xycoords="axes fraction",
+                xytext=(0, 4), textcoords="offset points",
+                fontsize=8, color=TEXT_MUTED, ha="left", va="bottom")
 
 
 def save(fig, path) -> None:

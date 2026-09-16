@@ -53,6 +53,20 @@ Outputs land in `figures/` (PNG) and `results/` (CSV + `summary.json`).
 The NTv3 weights are under a non-commercial license and are read read-only from the
 shared mount; nothing from them is redistributed here.
 
+### Checkpoint authenticity (verified)
+
+The local checkpoints came from a third-party import, and the whole analysis rests on
+them, so they were checked against the official gated HF release
+(`InstaDeepAI/NTv3_650M_post`, revision `ad62205`):
+
+| Artifact | Check | Result |
+|---|---|---|
+| `config.json` | sha256 vs official | identical (`a770f4b2…`) |
+| `model.safetensors` header (64,264 B) | byte compare | identical |
+| human head weight (`species_heads.21.head.weight`, 45,232,128 B) | byte compare via HTTP range | **identical** |
+
+So the tensors analysed here are the released ones, unmodified.
+
 ## Two methodological notes
 
 1. **Rows are L2-normalised, never per-row z-scored.** Subtracting a row's own mean

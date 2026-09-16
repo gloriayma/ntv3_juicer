@@ -1,0 +1,4 @@
+modality_pair,delta,n_cells,n_within_pairs,frac_positive
+Accessibility | RNA,0.012134509308266138,124,4197,0.7661290322580645
+Accessibility | CAGE,0.007380976314847377,3,10,0.6666666666666666
+CAGE | RNA,0.004396695514958469,4,30,0.75
